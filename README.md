@@ -15,9 +15,9 @@
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :category
+- belongs_to :category, dependent: :destroy
 - belongs_to :user
-- has_many :images
+- has_many :images, dependent: :destroy
 
 
 ## imagesテーブル
@@ -54,9 +54,9 @@
 |nickname|string|
 
 ### Association
-- has_many :items
-- has_many :cards
-- belongs_to :place
+- has_many :items, dependent: :destroy
+- has_many :cards, dependent: :destroy
+- belongs_to :place, dependent: :destroy
 
 
 ## placesテーブル
@@ -82,4 +82,4 @@
 |authorization_number|integer|null:false|
 
 ### Association
-- belongs_to :user
+- belongs_to :user0
