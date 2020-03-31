@@ -1,14 +1,13 @@
 # README
 
-## itemテーブル
+## itemsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |price|integer|null: false|
 |description|string|null: false|
-|images|string|null: false|
-|status|string||
+|status|integer|null: false|
 |cost|integer|null: false|
 |days|integer|null: false|
 |size|string||
@@ -18,49 +17,70 @@
 ### Association
 - belongs_to :category
 - belongs_to :user
+- has_many :images
 
 
-## categoryテーブル
+## imagesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|image|string|null: false|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :item
+
+
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 
 ### Association
-- has_many :item
+- has_many :items
 
 
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|
 |last_name|string|null:false|
 |first_name|string|null:false|
 |last_kana|string|null:false|
 |first_kana|string|null:false|
 |birth|string|null:false|
-|post|string|
-|prefecture|string|
-|city_name|string|
-|address|string|
-|building|string|
 |phone|integer|
-|password|string|
-|password_confirmation|string|
+|password|string|null:false|
+|password_confirmation|string|null:false|
 |email|string|null:false|
 |nickname|string|
 
 ### Association
 - has_many :items
-- has_many :card
+- has_many :cards
+- belongs_to :place
+
+
+## placesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|post_code|string|null:false|
+|prefecture|string|null:false|
+|city_name|string|null:false|
+|address|string|null:false|
+|building|string|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :user
 
 
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_id|integer|
-|number|integer|null:false,unique: true|
+|card_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+|number|integer|null:false, unique: true|
 |expiration_date|integer|null:false|
 |authorization_number|integer|null:false|
 
-### Assiciation
+### Association
 - belongs_to :user
