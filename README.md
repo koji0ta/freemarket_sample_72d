@@ -76,7 +76,6 @@
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 |number|integer|null:false, unique: true|
 |expiration_date|integer|null:false|
