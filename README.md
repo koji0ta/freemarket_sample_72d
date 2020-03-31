@@ -82,4 +82,4 @@
 |authorization_number|integer|null:false|
 
 ### Association
-- belongs_to :user0
+- belongs_to :user
