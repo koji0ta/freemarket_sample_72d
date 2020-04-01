@@ -2,20 +2,93 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
   .field
+    = f.label :ニックネーム
+    %br/
+    = f.text_field :nickname, autofocus: true
+  .field
     = f.label :email
     %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autocomplete: "email"
   .field
-    = f.label :password
+    = f.label :パスワード
     - if @minimum_password_length
       %em
-        (#{@minimum_password_length} characters minimum)
+        (#{@minimum_password_length} 文字以上)
     %br/
     = f.password_field :password, autocomplete: "new-password"
   .field
-    = f.label :password_confirmation
+    = f.label :パスワード確認
     %br/
     = f.password_field :password_confirmation, autocomplete: "new-password"
+
+  .field
+    = f.label :お名前
+    %br/
+    = f.text_field :last_name
+    %br/
+    = f.text_field :first_name
+
+  .field
+    = f.label :お名前（カナ）
+    %br/
+    = f.text_field :last_kana
+    %br/
+    = f.text_field :first_kana
+
+  .field
+    = f.label :生年月日
+    %br/
+    = f.date_select :birth, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
   .actions
-    = f.submit "Sign up"
+    = f.submit "新規登録"
+
 = render "devise/shared/links"
+
+
+.wrapper
+  .wrapper__header
+  .wrapper__contents
+    .wrapper__contents__box
+      .wrapper__contents__box__name
+      .wrapper__contents__box__form
+    .wrapper__contents__box
+      .wrapper__contents__box__name
+      .wrapper__contents__box__form
+    .wrapper__contents__box
+      .wrapper__contents__box__name
+      .wrapper__contents__box__form
+      .wrapper__contents__check-box
+
+    .wrapper__contents__name-box
+      .wrapper__contents__name-box__last
+        .wrapper__contents__name-box__last__name
+        .wrapper__contents__name-box__last__form
+
+      .wrapper_contents__name-box__first
+        .wrapper_contents__name-box__first__name
+        .wrapper_contents__name-box__first__form
+
+    .wrapper__contents__name-box
+      .wrapper__contents__name-box__last
+        .wrapper__contents__name-box__last__name
+        .wrapper__contents__name-box__last__form
+
+      .wrapper_contents__name-box__first
+        .wrapper_contents__name-box__first__name
+        .wrapper_contents__name-box__first__form
+
+    .wrapper__contents__birth
+      .wrapper__contents__birth__name
+      .wrapper__contents__birth__date
+        .wrapper__contents__birth__date__box
+        .wrapper__contents__birth__date__box
+        .wrapper__contents__birth__date__box
+
+    .wrapper__contents__btn
+      
+
+   
+
+    
+    
+      
