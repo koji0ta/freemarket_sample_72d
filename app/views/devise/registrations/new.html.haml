@@ -1,91 +1,70 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :ニックネーム
-    %br/
-    = f.text_field :nickname, autofocus: true
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autocomplete: "email"
-  .field
-    = f.label :パスワード
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} 文字以上)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :パスワード確認
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+= render partial: "devise/header_view"
 
-  .field
-    = f.label :お名前
-    %br/
-    = f.text_field :last_name
-    %br/
-    = f.text_field :first_name
+.new-reg
+  %h2.new-reg__header 会員情報入力
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .new-reg__contents
+      .new-reg__contents__wrapper
+        .new-reg__contents__wrapper__box
+          .field
+            = f.label :ニックネーム
+            %span.require 必須
+            %br/
+            = f.text_field :nickname, autofocus: true, placeholder: '例)ポチ',class: 'new-reg__contents__wrapper__box__form'
+        .new-reg__contents__wrapper__box
+          .field
+            = f.label :メールアドレス
+            %span.require 必須
+            %br/
+            = f.email_field :email, autocomplete: "email", placeholder: '例)sample@teamD',class: 'new-reg__contents__wrapper__box__form'
+        .new-reg__contents__wrapper__box
+          .field
+            = f.label :パスワード
+            %span.require 必須
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} 文字以上)
+            %br/
+            = f.password_field :password, autocomplete: "new-password", placeholder: '6文字以上の半角英数字',class: 'new-reg__contents__wrapper__box__form'
+        .new-reg__contents__wrapper__box
+          .field
+            = f.label :パスワード確認
+            %span.require 必須
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '確認',class: 'new-reg__contents__wrapper__box__form'
 
-  .field
-    = f.label :お名前（カナ）
-    %br/
-    = f.text_field :last_kana
-    %br/
-    = f.text_field :first_kana
+        .new-reg__contents__wrapper__name-box
+          .field
+            = f.label :お名前（全角）
+            %span.require 必須
+            %br/
+            = f.text_field :last_name, placeholder: '例)山田',class: 'new-reg__contents__wrapper__name-box__last'
+            = f.text_field :first_name, placeholder: '例)太郎',class: 'new-reg__contents__wrapper__name-box__first'
 
-  .field
-    = f.label :生年月日
-    %br/
-    = f.date_select :birth, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
-  .actions
-    = f.submit "新規登録"
+        .new-reg__contents__wrapper__name-box
+          .field
+            = f.label :お名前カナ（全角）
+            %span.require 必須
+            %br/
+            = f.text_field :last_kana, placeholder: '例)ヤマダ',class: 'new-reg__contents__wrapper__name-box__last'
+            = f.text_field :first_kana, placeholder: '例)タロウ',class: 'new-reg__contents__wrapper__name-box__first'
 
-= render "devise/shared/links"
+        .new-reg__contents__wrapper__birth
+          .field
+            = f.label :生年月日
+            %span.require 必須
+            %br/
+            != sprintf(f.date_select(:birth, prompt:"--",use_month_numbers:true, start_year:(Time.now.year - 10), end_year:1900, date_separator:'%s'),'年','月')+'日'
+        .actions
+          = f.submit "新規登録", class: 'new-reg__contents__wrapper__btn'
+
+        -# = render "devise/shared/links"
 
 
-.wrapper
-  .wrapper__header
-  .wrapper__contents
-    .wrapper__contents__box
-      .wrapper__contents__box__name
-      .wrapper__contents__box__form
-    .wrapper__contents__box
-      .wrapper__contents__box__name
-      .wrapper__contents__box__form
-    .wrapper__contents__box
-      .wrapper__contents__box__name
-      .wrapper__contents__box__form
-      .wrapper__contents__check-box
+= render partial: "devise/footer_view"
 
-    .wrapper__contents__name-box
-      .wrapper__contents__name-box__last
-        .wrapper__contents__name-box__last__name
-        .wrapper__contents__name-box__last__form
 
-      .wrapper_contents__name-box__first
-        .wrapper_contents__name-box__first__name
-        .wrapper_contents__name-box__first__form
-
-    .wrapper__contents__name-box
-      .wrapper__contents__name-box__last
-        .wrapper__contents__name-box__last__name
-        .wrapper__contents__name-box__last__form
-
-      .wrapper_contents__name-box__first
-        .wrapper_contents__name-box__first__name
-        .wrapper_contents__name-box__first__form
-
-    .wrapper__contents__birth
-      .wrapper__contents__birth__name
-      .wrapper__contents__birth__date
-        .wrapper__contents__birth__date__box
-        .wrapper__contents__birth__date__box
-        .wrapper__contents__birth__date__box
-
-    .wrapper__contents__btn
-      
    
 
     
