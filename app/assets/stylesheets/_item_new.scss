@@ -14,44 +14,14 @@
     margin: 0 auto;
     width: 700px;
     height: 80vh;
-    // background-color: blue;
-    &__images{
+    .item-new-box{
       border: solid 1px;
-      padding: 20px 15px;
-      #item-image{
-        // display: none;
-        height: 30px;
-        width: 100%;
-        border: solid 1px;
-      }
+      padding: 10px 10px;
     }
-    &__name{
-      border: solid 1px;
-      padding: 20px 15px;
-    }
-    &__status{
-      border: solid 1px;
-      padding: 20px 15px;
-    }
-    &__send{
-      border: solid 1px;
-      padding: 20px 15px;
-    }
-    &__price{
-      border: solid 1px;
-      padding: 20px 15px;
-    }
-    &__submit{
-      border: solid 1px;
-      padding: 20px 15px;
-    }
-
-
-
-
   }
   .items-text{
     font-size: 14px;
+    margin-bottom: 10px;
+    display: inline-block;
   }
-
 }

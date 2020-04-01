@@ -1,24 +1,26 @@
 .items-new
   .item-new
     = form_for ("") do |f| 
-      .item-new__images
-        %div
-          =f.label  "出品画像" ,class: "items-text"
-          %span 必須
+      .item-new-box
+        .item-new-box__image
+          = f.label  "出品画像" ,class: "items-text"
+          %span.require 必須
           %p 最大10枚までアップロードできます
-          =f.file_field :images, class:"item-input-field" id:"item-image"
-      .item-new__name
-        %div
-          =f.label  "商品名" ,class: "items-text"
-          %span 必須
-          = f.text_field :name,class:"item-input-field" 
-        %div
-          =f.label  "商品の説明" ,class: "items-text"
-          %span 必須
-          %p
-          = f.text_area :description,class:"item-input-field" 
-      .item-new__status
-        %div
+          %br/
+          = f.file_field :images, class:"item-input-field", id:"item-image"
+      .item-new-box
+        .item-new-box__name
+          = f.label  "商品名" ,class: "items-text"
+          %span.require 必須
+          %br/
+          = f.text_field :name,class:"item-input-field", placeholder:"40文字まで"
+          %br/ 
+          = f.label  "商品の説明" ,class: "items-text"
+          %span.require 必須
+          %br/
+          = f.text_area :description,class:"item-input-field" , placeholder:"商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
+      .item-new-box
+        .item-new-box__status
           = f.label "商品の詳細", class: "items-text"
           %ul
             -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→categories
@@ -31,26 +33,25 @@
             %li サイズ
             = f.text_field :name, placeholder:"仮で設計",class:"item-input-select" 
             -# = f.select :size
-      .item-new__send
-        %div
+      .item-new-box
+        .item-new-box__send
           = f.label "配送について", class: "items-text"
-        %ul
-          %li 配送料の負担
-          = f.text_field :name, placeholder:"仮で設計",class:"item-input-select"
-          -# = f.select  :cost
-          %li 発送元の地域
-          -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→places
-          = f.text_field :name, placeholder:"仮で設計",class:"item-input-select"
-          -# = f.select :prefecture
-          %li 発送までの日数
-          = f.text_field :name, placeholder:"仮で設計",class:"item-input-select"
-          -# = f.select :days
-      .item-new__price
-        %div
+          %ul
+            %li 配送料の負担
+            = f.text_field :name, placeholder:"仮で設計",class:"item-input-select"
+            -# = f.select  :cost
+            %li 発送元の地域
+            -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→places
+            = f.text_field :name, placeholder:"仮で設計",class:"item-input-select"
+            -# = f.select :prefecture
+            %li 発送までの日数
+            = f.text_field :name, placeholder:"仮で設計",class:"item-input-select"
+            -# = f.select :days
+      .item-new-box
+        .item-new-box__price
           = f.label "価格（￥300〜9,999,999)", class: "items-text"
           = f.number_field :price
-      .item-new__submit
-        %div
+      .item-new-box
+        .item-new-box__submit
           = f.submit  "出品する",  class:"new-item-sell"
-        %div
           = f.submit  "下書きに保存する",  class:"new-item-save"
