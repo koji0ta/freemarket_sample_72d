@@ -1,5 +1,4 @@
 = render "header_view"
-= render "footer_view"
 
 .login-main
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -16,6 +15,8 @@
           .login-main__panel__form-inner__submit-btn
             = f.submit "ログイン", class: "btn"
             = link_to "パスワードをお忘れの方", "#"
+
+= render "footer_view"
 
 
 
