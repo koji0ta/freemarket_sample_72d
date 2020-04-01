@@ -1,0 +1,57 @@
+.items-new{
+  margin: 10px ;
+  box-sizing: border-box;
+  span{
+    font-size: 12px;
+    background-color: red;
+  }
+  p{
+    font-size: 12px;
+    margin: 10px 0;
+  }
+
+  .item-new{
+    margin: 0 auto;
+    width: 700px;
+    height: 80vh;
+    // background-color: blue;
+    &__images{
+      border: solid 1px;
+      padding: 20px 15px;
+      #item-image{
+        // display: none;
+        height: 30px;
+        width: 100%;
+        border: solid 1px;
+      }
+    }
+    &__name{
+      border: solid 1px;
+      padding: 20px 15px;
+    }
+    &__status{
+      border: solid 1px;
+      padding: 20px 15px;
+    }
+    &__send{
+      border: solid 1px;
+      padding: 20px 15px;
+    }
+    &__price{
+      border: solid 1px;
+      padding: 20px 15px;
+    }
+    &__submit{
+      border: solid 1px;
+      padding: 20px 15px;
+    }
+
+
+
+
+  }
+  .items-text{
+    font-size: 14px;
+  }
+
+}
