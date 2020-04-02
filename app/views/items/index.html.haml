@@ -20,6 +20,9 @@
         - if user_signed_in?
           %li.top-header__inner__nav__listsright__mypage
             = link_to "マイページ", root_path, class: "decoration-none"
+            -# ログアウトは仮
+          %li.top-header__inner__nav__listsright__mypage
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "decoration-none"
         - else 
           %li.top-header__inner__nav__listsright__login
             = link_to "ログイン", new_user_session_path, class: "decoration-none"

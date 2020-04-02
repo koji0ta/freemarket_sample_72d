@@ -1,0 +1,31 @@
+.purchase-main
+  .purchase-main__container
+    %h2.purchase-main__container__title
+    .purchase-main__container__buy-item
+      .purchase-main__container__buy-item__inner
+        .purchase-main__container__buy-item__inner__box
+          %h3.purchase-main__container__buy-item__inner__box__image
+        .purchase-main__container__buy-item__inner__box__detail
+          %p.purchase-main__container__buy-item__inner__box__detail__name
+          %p.purchase-main__container__buy-item__inner__box__detail__price
+            %span 333円
+            %span.tax-included (税込)
+
+    .purchase-main__select__inner
+      .purchase-main__select__inner__pay
+        .purchase-main__select__inner__pay__amount
+        .purchase-main__select__inner__pay__price
+  
+        .purchase-main__select__inner__pay__method
+          .purchase-main__select__inner__pay__method__box
+            %h3.purchase-main__select__inner__pay__method__box__top
+              支払い方法
+            = link_to "登録してください", root_path
+
+        .purchase-main__select__inner__pay__adress
+          .purchase-main__select__inner__pay__adress__box
+            %h3.purchase-main__select__inner__pay__adress__box__top
+              配送先
+            = link_to "登録してください", root_path
+
+        .purchase-main__select__inner__pay__btn
