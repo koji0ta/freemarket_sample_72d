@@ -17,10 +17,14 @@
         %li.top-header__inner__nav__listsleft__brand
           ブランド
       %ul.top-header__inner__nav__listsright
-        %li.top-header__inner__nav__listsright__login
-          ログイン
-        %li.top-header__inner__nav__listsright__new
-          新規登録
+        - if user_signed_in?
+          %li.top-header__inner__nav__listsright__mypage
+            = link_to "マイページ", root_path, class: "decoration-none"
+        - else 
+          %li.top-header__inner__nav__listsright__login
+            = link_to "ログイン", new_user_session_path, class: "decoration-none"
+          %li.top-header__inner__nav__listsright__new
+            = link_to "新規登録", new_user_registration_path, class: "decoration-none"
 
 .top-main
   .top-main__image

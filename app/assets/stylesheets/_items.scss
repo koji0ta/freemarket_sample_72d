@@ -11,6 +11,16 @@ img {
   margin-right: 10px;
 }
 
+.decoration-none {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: gray;
+  opacity: 0.7;
+}
+
 // 商品一覧ページビューここから
 .top-header {
   padding: 0 60px; 
@@ -78,15 +88,22 @@ img {
       &__listsright {
         margin-left: auto;
         display: flex;
+        &__mypage {
+          color: #333;
+          line-height: 38px;
+          cursor: pointer;
+        }
         &__login {
           color: #333;
           line-height: 38px;
           padding: 0 0 0 16px;
+          cursor: pointer;
         }
         &__new {
           color: #333;
           line-height: 38px;
           padding: 0 0 0 16px;
+          cursor: pointer;
         }
       }
     }
