@@ -1,36 +1,110 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div
-      Currently waiting confirmation for: #{resource.unconfirmed_email}
-  .field
-    = f.label :password
-    %i (leave blank if you don't want to change it)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-    - if @minimum_password_length
-      %br/
-      %em
-        = @minimum_password_length
-        characters minimum
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :current_password
-    %i (we need your current password to confirm your changes)
-    %br/
-    = f.password_field :current_password, autocomplete: "current-password"
-  .actions
-    = f.submit "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+-# = render partial: "devise/header_view"
+
+.mypage-main
+  %h2.mypage-main__header アカウントの編集
+
+  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn btn-logout'
+  %br/
+  %br/
+
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    = render "devise/shared/error_messages", resource: resource
+
+    .mypage-main__edit-user
+      .mypage-main__edit-user__fields
+
+        .field
+          = f.label :ニックネーム
+          %span.form-require 必須
+          %br/
+          = f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "mypage-main__edit-user__fields__form"
+
+        .field
+          = f.label :メールアドレス
+          %span.form-require 必須
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: "mypage-main__edit-user__fields__form"
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            このメールアドレスは現在確認中です。: #{resource.unconfirmed_email}
+
+        .field
+          = f.label :現在のパスワード
+          %span.form-require 必須
+          %br/
+          = f.password_field :current_password, autocomplete: "current-password", class: "mypage-main__edit-user__fields__form"
+        
+        .field
+          = f.label :新しいパスワード
+          %br/
+          = f.password_field :password, autocomplete: "new-password", placeholder: "6文字以上の半角英数字", class: "mypage-main__edit-user__fields__form"
+          - if @minimum_password_length
+            %br/
+        
+        .field
+          = f.label :新しいパスワード確認
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "新しいパスワードを再入力", class: "mypage-main__edit-user__fields__form"
+
+
+        .field.mypage-main__edit-user__fields__name-box
+          = f.label :お名前
+          %span.form-require 必須
+          %br/
+          = f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "例）山田", class: "mypage-main__edit-user__fields__name-box__last"
+          = f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "例）彩", class: "mypage-main__edit-user__fields__name-box__first"
+        
+        .field.mypage-main__edit-user__fields__name-box
+          = f.label :お名前カナ
+          %span.form-require 必須
+          %br/
+          = f.text_field :last_kana, autofocus: true, autocomplete: "last_kana", placeholder: "例）ヤマダ", class: "mypage-main__edit-user__fields__name-box__last"
+          = f.text_field :first_kana, autofocus: true, autocomplete: "first_kana", placeholder: "例）アヤ", class: "mypage-main__edit-user__fields__name-box__first"
+        
+        .field.mypage-main__edit-user__fields__birth
+          = f.label :生年月日
+          %span.form-require 必須
+          %br/
+          != sprintf(f.date_select(:birth, prompt: "--", use_month_numbers: true, start_year: (Time.now.year - 10), end_year: 1900, date_separator: '%s'),'年','月') + '日'
+
+
+        .field
+          = f.label :郵便番号
+          %span.form-optional 任意
+          %br/
+          = f.text_field :nickname, autofocus: true, autocomplete: "post_code", placeholder: "例）1234567", class: "mypage-main__edit-user__fields__form"
+
+        .field
+          = f.label :都道府県
+          %span.form-optional 任意
+          %br/
+          = f.text_field :nickname, autofocus: true, autocomplete: "prefecture", placeholder: "例）神奈川県", class: "mypage-main__edit-user__fields__form"
+
+        .field
+          = f.label :市区町村
+          %span.form-optional 任意
+          %br/
+          = f.text_field :nickname, autofocus: true, autocomplete: "city_name", placeholder: "例）横浜市緑区", class: "mypage-main__edit-user__fields__form"
+
+        .field
+          = f.label :番地
+          %span.form-optional 任意
+          %br/
+          = f.text_field :nickname, autofocus: true, autocomplete: "address", placeholder: "例）青山1-1-1", class: "mypage-main__edit-user__fields__form"
+
+        .field
+          = f.label :建物名
+          %span.form-optional 任意
+          %br/
+          = f.text_field :nickname, autofocus: true, autocomplete: "building", placeholder: "例）柳ビル103", class: "mypage-main__edit-user__fields__form"
+
+
+        .actions.mypage-main__edit-user__fields__btn-box
+          = f.submit "変更する", class: "mypage-main__edit-user__fields__btn-box__btn"
+          %br/
+        
+        #{button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-delete"}
+    
+  = link_to "戻る", :back
+
+-# = render partial: "devise/footer_view"
