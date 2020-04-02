@@ -1,0 +1,73 @@
+= render partial: "devise/header_view"
+
+.items-new
+  .item-new
+    = form_for ("") do |f| 
+      .item-new-box
+        .item-new-box__image
+          = f.label  "出品画像" ,class: "items-text"
+          %span.require 必須
+          %p.upload-image  最大10枚までアップロードできます
+          %br/
+          = f.file_field :images, class:"item-input-field", id:"item-image"
+      .item-new-box
+        .item-new-box__name
+          = f.label  "商品名" ,class: "items-text"
+          %span.require 必須
+          %br/
+          = f.text_field :name,class:"item-input-field", placeholder:"40文字まで"
+          %br/ 
+          = f.label  "商品の説明" ,class: "items-text"
+          %span.require 必須
+          %br/
+          = f.text_area :description,class:"item-text-field" , placeholder:"商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
+          %br/
+          %p.style-counter
+            %span 0
+            %span /
+            %span 1000
+      .item-new-box
+        .item-new-box__status
+          = f.label "商品の詳細", class: "items-text"
+          %span.require 必須
+          %ul
+            -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→categories
+            %li.status-menu カテゴリ
+            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field" 
+            -# = f.select  :name
+            %li.status-menu 状態
+            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field" 
+            -# = f.select :status
+            %li.status-menu サイズ
+            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field" 
+            -# = f.select :size
+      .item-new-box
+        .item-new-box__send
+          = f.label "配送について", class: "items-text"
+          %span.require 必須
+          %ul
+            %li.send-menu 配送料の負担
+            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field"
+            -# = f.select  :cost
+            %li.send-menu 発送元の地域
+            -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→places
+            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field"
+            -# = f.select :prefecture
+            %li.send-menu 発送までの日数
+            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field"
+            -# = f.select :days
+      .item-new-box
+        .item-new-box__price
+          = f.label "販売価格", class: "items-text"
+          %span.require 必須
+          %span.en ￥
+          = f.number_field :price,class:"item-input-number"
+        .item-new-box__tax
+          販売手数料(10%)
+          %span.price-tax  -
+      .item-new-box
+        .item-new-box__submit
+          = f.submit  "出品する",  class:"new-item-sell"
+          = f.submit  "下書きに保存する",  class:"new-item-save"
+      
+= render partial: "devise/footer_view"
