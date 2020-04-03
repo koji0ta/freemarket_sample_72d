@@ -1,0 +1,50 @@
+= render partial: "devise/header_view"
+
+.container.clearfix
+
+  .contents-box
+    .contents-box__user-box
+      .contents-box__user-box__profile-box
+        %img(src="assets/icon/member_photo_noimage_thumb.png" alt="" class="icon")
+        %h2.user-name ユーザー名
+        
+    .contents-box__news-box
+      .mypage-tabs お知らせ
+      %ul.contents-box__news-box__news-items
+        %li.contents-box__news-box__news-items__news-link
+          .contents-box__news-box__news-items__news-link__body
+            .message 事務局からのお知らせ 1
+            .time 1時間前
+        %li.contents-box__news-box__news-items__news-link
+          .contents-box__news-box__news-items__news-link__body
+            .message 事務局からのお知らせ 2
+            .time 2時間前
+        %li.contents-box__news-box__news-items__news-link
+          .contents-box__news-box__news-items__news-link__body
+            .message 事務局からのお知らせ 3
+            .time 3時間前
+
+    .contents-box__purchase-box
+      .contents-box__purchase-box__purchase-head 購入した商品
+      .contents-box__purchase-box__purchase-tabs
+        .tab 取引中
+        .tab 過去の取引
+      %ul.contents-box__purchase-box__purchase-items
+        %li.contents-box__purchase-box__purchase-items__link
+          .contents-box__purchase-box__purchase-items__link__body
+            .text 購入履歴1
+            .time 1時間前
+        %li.contents-box__purchase-box__purchase-items__link
+          .contents-box__purchase-box__purchase-items__link__body
+            .text 購入履歴2
+            .time 2時間前
+
+  .side-box
+    .side-box__contents-items
+      - @contents.each do |c|
+        .side-box__contents-items__content-title
+          = c
+
+.footer-sell-btn
+
+= render partial: "devise/footer_view"
