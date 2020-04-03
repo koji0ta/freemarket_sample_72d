@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def update
   end
-
+0
   private
 
   def contents_listing
