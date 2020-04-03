@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+.link-to-register {
+  text-decoration: none;
+  color: rgb(66, 162, 201);
+}
+
+.link-to-purchase {
+  padding: 20px 40%;
+  background-color: slategray;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.purchase-main {
+  margin: 5% 25%;
+  &__container {
+    width: 100%;
+    margin: 0 auto;
+    &__title {
+      font-size: 32px;
+      font-weight: bold;
+      padding: 24px;
+      text-align: center;
+    }
+    &__buy-item {
+      padding: 24px;
+      &__inner {
+        max-width: 343px;
+        margin: 0 auto;
+        &__box {
+          display: flex;
+          &__image {
+            height:  160px;
+            width: 160px;
+            min-width: 160px;
+            img {
+              width: 160px;
+            }
+          }
+          &__detail {
+            padding-top: 64px;
+            margin-left: 32px;
+            height: 160px;
+            width: 160px;
+            &__name {
+              font-size: 24px;
+              font-weight: bold;
+              margin: 0;
+              padding-bottom: 8px;
+            }
+            &__price {
+              font-size:20px;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    &__bottom {
+      padding: 16px 40px;
+      &__inner {
+        max-width: 343px;
+        margin: 0 auto;
+        &__pay {
+          display: flex;
+          justify-content: space-between;
+          line-height: 1.5;
+          border-bottom: 1px solid #f5f5f5;
+          &__amount {
+            padding-top: 16px;
+            font-size: 20px;
+            font-weight: bold;
+          }
+          &__price {
+            font-size: 36px;
+            font-weight: bold;
+          }
+        }
+        &__select {
+          padding: 32px 0;
+          &__method {
+            margin-bottom: 32px;
+            &__box {
+              padding-bottom: 8px;
+              border-bottom: 1px solid #f5f5f5;
+              &__top {
+                font-size: 14px;
+              }
+            }
+          }
+          &__delivery {
+            padding: 24px 0;
+            &__address {
+              padding-bottom: 8px;
+              border-bottom: 1px solid #f5f5f5;
+              &__top {
+                font-size: 14px;
+              }
+            }
+          }
+          &__btn {
+            text-align: center;
+            margin-top: 32px;
+          }
+        }
+      }
+    }
+  }
+}
