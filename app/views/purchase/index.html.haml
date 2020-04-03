@@ -1,31 +1,42 @@
+= render "devise/header_view"
+
 .purchase-main
   .purchase-main__container
     %h2.purchase-main__container__title
+      購入内容の確認
     .purchase-main__container__buy-item
       .purchase-main__container__buy-item__inner
         .purchase-main__container__buy-item__inner__box
-          %h3.purchase-main__container__buy-item__inner__box__image
-        .purchase-main__container__buy-item__inner__box__detail
-          %p.purchase-main__container__buy-item__inner__box__detail__name
-          %p.purchase-main__container__buy-item__inner__box__detail__price
-            %span 333円
-            %span.tax-included (税込)
+          .purchase-main__container__buy-item__inner__box__image
+            = image_tag("/assets/item/item02.png")
+          .purchase-main__container__buy-item__inner__box__detail
+            %p.purchase-main__container__buy-item__inner__box__detail__name
+              テスト商品
+            %p.purchase-main__container__buy-item__inner__box__detail__price
+              %span 333円
+              %span.tax-included (税込)
 
-    .purchase-main__select__inner
-      .purchase-main__select__inner__pay
-        .purchase-main__select__inner__pay__amount
-        .purchase-main__select__inner__pay__price
-  
-        .purchase-main__select__inner__pay__method
-          .purchase-main__select__inner__pay__method__box
-            %h3.purchase-main__select__inner__pay__method__box__top
-              支払い方法
-            = link_to "登録してください", root_path
+    .purchase-main__container__bottom
+      .purchase-main__container__bottom__inner
 
-        .purchase-main__select__inner__pay__adress
-          .purchase-main__select__inner__pay__adress__box
-            %h3.purchase-main__select__inner__pay__adress__box__top
-              配送先
-            = link_to "登録してください", root_path
+        .purchase-main__container__bottom__inner__pay
+          .purchase-main__container__bottom__inner__pay__amount
+            支払い金額
+          .purchase-main__container__bottom__inner__pay__price
+            333円
+        .purchase-main__container__bottom__inner__select
+          .purchase-main__container__bottom__inner__select__method
+            .purchase-main__container__bottom__inner__select__method__box
+              %h3.purchase-main__container__bottom__inner__select__method__box__top
+                支払い方法
+              = link_to "登録してください", root_path, class:"link-to-register"
 
-        .purchase-main__select__inner__pay__btn
+          .purchase-main__container__bottom__inner__select__delivery
+            .purchase-main__container__bottom__inner__select__delivery__address
+              %h3.purchase-main__container__bottom__inner__select__delivery__address__top
+                配送先
+              = link_to "登録してください", root_path, class:"link-to-register"
+          .purchase-main__container__bottom__inner__select__btn
+            = link_to "購入する", root_path, class: "btn link-to-purchase"
+
+= render "devise/footer_view"
