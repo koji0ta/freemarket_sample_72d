@@ -1,34 +1,4 @@
-%header.top-header
-  .top-header__inner
-    .top-header__inner__top
-      %h1.top-header__inner__top__icon
-        = link_to image_tag("/assets/logo/logo.png"), root_path, class: "top-header__inner__top__icon__home"
-      .top-header__inner__top__searchbox
-        .form_for-box
-          %input.searchbox-input-text{:name => "key", :placeholder => "キーワードから探す", :value => ""}
-          %botton{ class:"search-botton",type: "submit" }
-            .top-header__inner__top__searchbox__icon
-              = image_tag("/assets/icon/icon-search 1.png")
-
-    .top-header__inner__nav
-      %ul.top-header__inner__nav__listsleft
-        %li.top-header__inner__nav__listsleft__category
-          カテゴリー
-        %li.top-header__inner__nav__listsleft__brand
-          ブランド
-      %ul.top-header__inner__nav__listsright
-        - if user_signed_in?
-          %li.top-header__inner__nav__listsright__mypage
-            = link_to "マイページ", root_path, class: "decoration-none"
-            -# ログアウトは仮
-          %li.top-header__inner__nav__listsright__mypage
-            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "decoration-none"
-        - else 
-          %li.top-header__inner__nav__listsright__login
-            = link_to "ログイン", new_user_session_path, class: "decoration-none"
-          %li.top-header__inner__nav__listsright__new
-            = link_to "新規登録", new_user_registration_path, class: "decoration-none"
-
+= render partial: "top-header"
 .top-main
   .top-main__image
     .top-main__image__content
@@ -218,55 +188,8 @@
                 %p
                   (税込)
 
-%aside.top-appbanner
-  .top-appbanner__inner
-    %h2.top-appbanner__inner__title
-      だれでもかんたん、人生を変えるフリマアプリ
-    %p.top-appbanner__inner__text
-      今すぐ無料ダウンロード！
-    .top-appbanner__inner__icon
-      = link_to image_tag("/assets/logo/app-store.svg"), root_path, class: 'app-store-btn'
-      = link_to image_tag("/assets/logo/google-play.svg"), root_path, class: 'google-play-btn'
-
-.top-footer
-  %ul.top-footer__contents
-    %li.top-footer__contents__content
-      %h2.top-footer__contents__content__head
-        FURIMAについて
-      %ul
-        %li
-          = link_to "会社概要（運営会社）", root_path, class: "top-footer-link"
-        %li
-          = link_to "プライバシーポリシー", root_path, class: "top-footer-link"
-        %li
-          = link_to "FURIMA利用規約", root_path, class: "top-footer-link"
-        %li
-          = link_to "ポイントに関する特約", root_path, class: "top-footer-link"
-
-    %li.top-footer__contents__content
-      %h2.top-footer__contents__content__head
-        FURIMAを見る
-      %ul
-        %li
-          = link_to "カテゴリー一覧", root_path, class: "top-footer-link"
-        %li
-          = link_to "ブランド一覧", root_path, class: "top-footer-link"
-
-    %li.top-footer__contents__content
-      %h2.top-footer__contents__content__head
-        ヘルプ＆ガイド
-      %ul
-        %li
-          = link_to "FURIMAガイド", root_path, class: "top-footer-link"
-        %li
-          = link_to "FURIMAロゴ利用ガイドライン", root_path, class: "top-footer-link"
-        %li
-          = link_to "お知らせ", root_path, class: "top-footer-link"
-
-  .top-footer__logo
-    = link_to image_tag("/assets/logo/logo-white.png"), root_path 
-
-  %p © FURIMA
+= render partial: "top-appbanner"
+= render partial: "top-footer"
 
 = link_to root_path do
   .top-exhibit-btn
