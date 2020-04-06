@@ -2,14 +2,18 @@
 
 .items-new
   .item-new
-    = form_for ("") do |f| 
+    = form_for (@item) do |f| 
       .item-new-box
         .item-new-box__image
           = f.label  "出品画像" ,class: "items-text"
           %span.require 必須
           %p.upload-image  最大10枚までアップロードできます
-          %br/
-          = f.file_field :images, class:"item-input-field", id:"item-image"
+          .item-new-box__image__field
+            .item-new-box__image__field__nav
+              =icon('fa','camera')
+              %p.image_nav  ドラックアンドドロップ
+              %p.image_nav  もしくはファイルからアップロードできます
+            = f.file_field :images, class:"item-input-field", value:"",id:"item-image"
       .item-new-box
         .item-new-box__name
           = f.label  "商品名" ,class: "items-text"
@@ -33,29 +37,24 @@
           %ul
             -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→categories
             %li.status-menu カテゴリ
-            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field" 
+            = f.select :name, [['選択してください',0],['メンズ',1],['レディース',2],['キッズ',3]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
             -# = f.select  :name
             %li.status-menu 状態
-            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field" 
-            -# = f.select :status
+            = f.select :status, [['選択してください',0],['新品',1],['ほぼ新品',2],['傷あり',3],['汚れあり',4]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
             %li.status-menu サイズ
-            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field" 
-            -# = f.select :size
+            = f.select :size, [['選択してください',0],['S',1],['M',2],['L',3],['LL',4]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
       .item-new-box
         .item-new-box__send
           = f.label "配送について", class: "items-text"
           %span.require 必須
           %ul
             %li.send-menu 配送料の負担
-            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field"
-            -# = f.select  :cost
+            = f.select :cost, [['選択してください',0],['送料込み(出品者負担)',1],['着払い(購入者負担)',2]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
             %li.send-menu 発送元の地域
             -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→places
-            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field"
-            -# = f.select :prefecture
+            = f.select :prefecture, [['選択してください',0],['北海道',1],['青森',2]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
             %li.send-menu 発送までの日数
-            = f.text_field :name, placeholder:"仮で設計",class:"item-input-field"
-            -# = f.select :days
+            = f.select :days, [['選択してください',0],['1〜2日で発送',1],['2〜3日で発送',2],['4〜7日で発送',3]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
       .item-new-box
         .item-new-box__price
           = f.label "販売価格", class: "items-text"
@@ -69,5 +68,5 @@
         .item-new-box__submit
           = f.submit  "出品する",  class:"new-item-sell"
           = f.submit  "下書きに保存する",  class:"new-item-save"
-      
+
 = render partial: "devise/footer_view"
