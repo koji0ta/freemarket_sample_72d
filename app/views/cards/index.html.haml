@@ -1,0 +1,16 @@
+.cards-index
+  %h2.cards-index__top
+    支払い方法
+  .cards-index__container
+    .cards-index__container__head
+      %h3.cards-index__container__head__title
+        クレジットカード一覧
+    %ul.cards-index__container__cards
+    
+    .cards-index__container__add-card
+      .cards-index__container__add-card__margin
+        = link_to new_card_path, class: "add-card btn" do
+          クレジットカードを追加する
+    .cards-index__container__bottom
+      = link_to cards_path, class: "cards-index__container__bottom__link" do
+        支払い方法について >

@@ -1,0 +1,17 @@
+.cards-new {
+  width: 50%;
+  margin: 0;
+  &__top {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 8px 24px;
+    text-align: center;
+  }
+  &__container {
+    padding: 40px;
+    border-top: 1px solid #f5f5f5;
+    &__margin {
+      margin: 0 auto;
+    }
+  }
+}
