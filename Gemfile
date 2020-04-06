@@ -78,3 +78,5 @@ gem 'devise'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem "font-awesome-sass"
+gem 'carrierwave'
+gem 'mini_magick'

@@ -13,7 +13,8 @@
               =icon('fa','camera')
               %p.image_nav  ドラックアンドドロップ
               %p.image_nav  もしくはファイルからアップロードできます
-            = f.file_field :images, class:"item-input-field", value:"",id:"item-image"
+            = f.fields_for :images do |i|
+              = i.file_field :image, class:"item-input-field", value:"",id:"item-image"
       .item-new-box
         .item-new-box__name
           = f.label  "商品名" ,class: "items-text"
@@ -37,7 +38,7 @@
           %ul
             -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→categories
             %li.status-menu カテゴリ
-            = f.select :name, [['選択してください',0],['メンズ',1],['レディース',2],['キッズ',3]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
+            -# = f.select :name, [['選択してください',0],['メンズ',1],['レディース',2],['キッズ',3]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
             -# = f.select  :name
             %li.status-menu 状態
             = f.select :status, [['選択してください',0],['新品',1],['ほぼ新品',2],['傷あり',3],['汚れあり',4]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
@@ -52,7 +53,7 @@
             = f.select :cost, [['選択してください',0],['送料込み(出品者負担)',1],['着払い(購入者負担)',2]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
             %li.send-menu 発送元の地域
             -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→places
-            = f.select :prefecture, [['選択してください',0],['北海道',1],['青森',2]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
+            -# = f.select :prefecture, [['選択してください',0],['北海道',1],['青森',2]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
             %li.send-menu 発送までの日数
             = f.select :days, [['選択してください',0],['1〜2日で発送',1],['2〜3日で発送',2],['4〜7日で発送',3]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
       .item-new-box
@@ -67,6 +68,6 @@
       .item-new-box
         .item-new-box__submit
           = f.submit  "出品する",  class:"new-item-sell"
-          = f.submit  "下書きに保存する",  class:"new-item-save"
+          -# = f.submit  "下書きに保存する",  class:"new-item-save"
 
 = render partial: "devise/footer_view"
