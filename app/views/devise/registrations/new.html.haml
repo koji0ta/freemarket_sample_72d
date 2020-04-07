@@ -56,9 +56,39 @@
             %span.require 必須
             %br/
             != sprintf(f.date_select(:birth, prompt:"--",use_month_numbers:true, start_year:(Time.now.year - 10), end_year:1900, date_separator:'%s'),'年','月')+'日'
-        .actions
-          = f.submit "新規登録", class: 'new-reg__contents__wrapper__btn'
 
+        = f.fields_for :place do |f|
+          .new-reg__contents__wrapper__box
+            .field
+              = f.label :郵便番号 
+              %span.require 必須
+              = f.text_field :post_code, autofocus: true, autocomplete: "post_code", placeholder: "例）1234567", class: "new-reg__contents__wrapper__box__form"
+          .new-reg__contents__wrapper__box
+            .field
+              = f.label :都道府県
+              %span.require 必須
+              %br/
+              = f.text_field :prefecture, autofocus: true, autocomplete: "prefecture", placeholder: "例）神奈川県", class: "new-reg__contents__wrapper__box__form"
+          .new-reg__contents__wrapper__box
+            .field
+              = f.label :市区町村
+              %span.require 必須
+              %br/
+              = f.text_field :city_name, autofocus: true, autocomplete: "city_name", placeholder: "例）横浜市緑区", class: "new-reg__contents__wrapper__box__form"
+          .new-reg__contents__wrapper__box
+            .field
+              = f.label :番地
+              %span.require 必須
+              %br/
+              = f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "例）青山1-1-1", class: "new-reg__contents__wrapper__box__form"
+          .new-reg__contents__wrapper__box
+            .field
+              = f.label :建物名
+              %span.form-optional 任意
+              %br/
+              = f.text_field :building, autofocus: true, autocomplete: "building", placeholder: "例）柳ビル103", class: "new-reg__contents__wrapper__box__form"
 
-
+              .actions
+                = f.submit "新規登録", class: 'new-reg__contents__wrapper__btn'
+      
 = render partial: "devise/footer_view"
