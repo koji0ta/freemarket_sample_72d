@@ -5,7 +5,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new
     @place = @user.build_place
   end
-
+  
+  # def edit
+  #   @user = User.find(params[:id])
+    # @place = @user.build_place
+  # end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
