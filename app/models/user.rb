@@ -13,5 +13,6 @@ class User < ApplicationRecord
 
   has_many :items, dependent: :destroy
   has_many :cards, dependent: :destroy
-  belongs_to :place, dependent: :destroy
+  has_one :place, dependent: :destroy
+  accepts_nested_attributes_for :place
 end
