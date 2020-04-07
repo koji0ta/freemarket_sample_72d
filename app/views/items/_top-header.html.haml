@@ -2,14 +2,14 @@
   .top-header__inner
     .top-header__inner__top
       %h1.top-header__inner__top__icon
-        = link_to "#" do
-          = image_tag("logo/logo.png"), root_path, class: "top-header__inner__top__icon__home"
+        = link_to root_path do
+          = image_tag "logo/logo.png", class: "top-header__inner__top__icon__home"
       .top-header__inner__top__searchbox
         .form_for-box
           %input.searchbox-input-text{:name => "key", :placeholder => "キーワードから探す", :value => ""}
           %botton{ class:"search-botton",type: "submit" }
             .top-header__inner__top__searchbox__icon
-              = image_tag("icon/icon-search 1.png")
+              = image_tag "icon/icon-search 1.png"
 
     .top-header__inner__nav
       %ul.top-header__inner__nav__listsleft

@@ -5,7 +5,7 @@
     %p.top-appbanner__inner__text
       今すぐ無料ダウンロード！
     .top-appbanner__inner__icon
-      = link_to do
-        = image_tag("logo/app-store.svg"), root_path, class: 'app-store-btn'
-      = link_to do
-        = image_tag("logo/google-play.svg"), root_path, class: 'google-play-btn'
+      = link_to root_path do
+        = image_tag "logo/app-store.svg", class: 'app-store-btn'
+      = link_to root_path do
+        = image_tag "logo/google-play.svg", class: 'google-play-btn'
