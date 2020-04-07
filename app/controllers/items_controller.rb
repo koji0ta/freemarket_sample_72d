@@ -10,8 +10,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    # binding.pry
     if 
-      # binding.pry
+      binding.pry
       @item.save
       @item.errors.messages
       redirect_to root_path  notice: "出品が完了しました"
@@ -23,7 +24,7 @@ class ItemsController < ApplicationController
   private
     
   def item_params
-    params.require(:item).permit(:name,:description,:status,:size,:cost,:days,:price, images_attributes: [:image])
+    params.require(:item).permit(:name,:description,:status,:size,:cost,:days,:price,:category_id, images_attributes: [:image])
   end
 
 end
