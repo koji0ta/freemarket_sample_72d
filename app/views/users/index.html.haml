@@ -44,7 +44,7 @@
       %li
         = link_to "トップページ", ("/")
       %li
-        = link_to "マイページ"
+        = link_to "マイページ編集", edit_user_registration_path
       %li
         %a お知らせ
       %li
@@ -65,8 +65,11 @@
         = link_to "ログアウト", destroy_user_session_path, method: :delete
 
 .footer-sell-btn
-  %span.top-exhibit-btn__text 出品する
-  = image_tag("/assets/icon/icon_camera.png")
+  %span.top-exhibit-btn__text
+  -# %= label object_name, method, {}
+  = link_to "items/new" do
+    = "出品する"
+    = image_tag("icon/icon_camera.png")
 
 = render partial: "devise/footer_view"
 
