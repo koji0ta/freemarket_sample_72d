@@ -9,8 +9,10 @@
       .top-main__image__content__text
         フリマアプリです  
       .top-main__image__content__btn
-        = link_to image_tag("/assets/logo/app-store.svg"), root_path, class: 'app-store-btn'
-        = link_to image_tag("/assets/logo/google-play.svg"), root_path, class: 'google-play-btn'
+        = link_to root_path do
+          = image_tag "logo/app-store.svg", class: 'app-store-btn'
+        = link_to root_path do
+          =image_tag "logo/google-play.svg", class: 'google-play-btn'
 
   .top-main__introduction
     %h2.top-main__introduction__subtitle
@@ -19,7 +21,7 @@
       %li.top-main__introduction__lists__list
         .top-main__introduction__lists__list__pict
           %span.top-main__introduction__lists__list__pict__number 1
-          = image_tag("/assets/pict/pict-reason-01.jpg")
+          = image_tag "pict/pict-reason-01.jpg"
         %h3.top-main__introduction__lists__list__text
           %span 3分で
           すぐに出品
@@ -29,7 +31,7 @@
       %li.top-main__introduction__lists__list
         .top-main__introduction__lists__list__pict
           %span.top-main__introduction__lists__list__pict__number 2
-          = image_tag("/assets/pict/pict-reason-02.jpg")
+          = image_tag "pict/pict-reason-02.jpg"
         %h3.top-main__introduction__lists__list__text
           %span シンプル
           で使いやすい
@@ -39,7 +41,7 @@
       %li.top-main__introduction__lists__list
         .top-main__introduction__lists__list__pict
           %span.top-main__introduction__lists__list__pict__number 3
-          = image_tag("/assets/pict/pict-reason-03.jpg")
+          = image_tag "pict/pict-reason-03.jpg"
         %h3.top-main__introduction__lists__list__text
           手数料
           %span 業界最安
@@ -57,8 +59,10 @@
         %br
         ほしかったあの商品に出会えるかもしれません。
       .top-main__dl__inner__btn
-        = link_to image_tag("/assets/logo/app-store.svg"), root_path, class: 'app-store-btn'
-        = link_to image_tag("/assets/logo/google-play.svg"), root_path, class: 'google-play-btn'
+        = link_to root_path do
+          = image_tag "logo/app-store.svg", class: 'app-store-btn'
+        = link_to root_path do
+          = image_tag "logo/google-play.svg", class: 'google-play-btn'
 
   .top-main__features
     %h2.top-main__features__head
@@ -66,7 +70,7 @@
     .top-main__features__items
       .top-main__features__items__item
         .top-main__features__items__item__image
-          = image_tag("/assets/icon/icon-01.png")
+          = image_tag "icon/icon-01.png"
         %h3.top-main__features__items__item__subtitle
           簡単に売り買いできる
         %p.top-main__features__items__item__detail
@@ -74,7 +78,7 @@
     
       .top-main__features__items__item
         .top-main__features__items__item__image
-          = image_tag("/assets/icon/icon-02.png")
+          = image_tag "icon/icon-02.png"
         %h3.top-main__features__items__item__subtitle
           売上金は即日振込みに対応
         %p.top-main__features__items__item__detail
@@ -82,7 +86,7 @@
 
       .top-main__features__items__item
         .top-main__features__items__item__image
-          = image_tag("/assets/icon/icon-03.png")
+          = image_tag "icon/icon-03.png"
         %h3.top-main__features__items__item__subtitle
           様々な支払いに対応
         %p.top-main__features__items__item__detail
@@ -99,7 +103,7 @@
         .top-main__pickup__productbox__lists__list
           = link_to root_path do
             .top-main__pickup__productbox__lists__list__img
-              = image_tag("/assets/item/item01.png")
+              = image_tag "item/item01.png"
             .top-main__pickup__productbox__lists__list__body
               %h3.top-main__pickup__productbox__lists__list__body__name
                 商品名
@@ -113,7 +117,7 @@
         .top-main__pickup__productbox__lists__list
           = link_to root_path do
             .top-main__pickup__productbox__lists__list__img
-              = image_tag("/assets/item/item01.png")
+              = image_tag "item/item01.png"
             .top-main__pickup__productbox__lists__list__body
               %h3.top-main__pickup__productbox__lists__list__body__name
                 商品名
@@ -127,7 +131,7 @@
         .top-main__pickup__productbox__lists__list
           = link_to root_path do
             .top-main__pickup__productbox__lists__list__img
-              = image_tag("/assets/item/item01.png")
+              = image_tag "item/item01.png"
             .top-main__pickup__productbox__lists__list__body
               %h3.top-main__pickup__productbox__lists__list__body__name
                 商品名
@@ -149,7 +153,7 @@
         .top-main__pickup__productbox__lists__list
           = link_to root_path do
             .top-main__pickup__productbox__lists__list__img
-              = image_tag("/assets/item/item01.png")
+              = image_tag "item/item01.png"
             .top-main__pickup__productbox__lists__list__body
               %h3.top-main__pickup__productbox__lists__list__body__name
                 商品名
@@ -163,7 +167,7 @@
         .top-main__pickup__productbox__lists__list
           = link_to root_path do
             .top-main__pickup__productbox__lists__list__img
-              = image_tag("/assets/item/item01.png")
+              = image_tag "item/item01.png"
             .top-main__pickup__productbox__lists__list__body
               %h3.top-main__pickup__productbox__lists__list__body__name
                 商品名
@@ -177,7 +181,7 @@
         .top-main__pickup__productbox__lists__list
           = link_to root_path do
             .top-main__pickup__productbox__lists__list__img
-              = image_tag("/assets/item/item01.png")
+              = image_tag "item/item01.png"
             .top-main__pickup__productbox__lists__list__body
               %h3.top-main__pickup__productbox__lists__list__body__name
                 商品名
@@ -191,7 +195,9 @@
 = render partial: "top-appbanner"
 = render partial: "top-footer"
 
-= link_to root_path do
+
+= link_to  new_item_path do
   .top-exhibit-btn
     %span.top-exhibit-btn__text 出品する
     = image_tag("/assets/icon/icon_camera.png")
+

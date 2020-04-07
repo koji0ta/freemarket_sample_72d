@@ -1,4 +1,6 @@
 @import "reset";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 @import "items";
 @import "login";
 @import "header_view";
@@ -6,3 +8,8 @@
 @import "new-reg";
 @import "item_new";
 @import "purchase";
+@import "items_show";
+@import "user_edit";
+@import "users";
+@import "cards_index";
+@import "cards_new";
