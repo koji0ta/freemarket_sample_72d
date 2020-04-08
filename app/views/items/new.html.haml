@@ -38,8 +38,7 @@
           %ul
             -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→categories
             %li.status-menu カテゴリ
-            = f.select :category_id,Category.pluck(:id,:name), {include_blank: false, selected: 0 }, {class:"item-select-field"} 
-            -# = f.select  :name
+            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.status-menu 状態
             = f.select :status, [['選択してください',0],['新品',1],['ほぼ新品',2],['傷あり',3],['汚れあり',4]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
             %li.status-menu サイズ
