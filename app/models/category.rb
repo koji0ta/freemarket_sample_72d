@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
   has_many :items
-
+  
   enum category: {
     選択してください:0,
     レディース:1 ,
