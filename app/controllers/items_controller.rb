@@ -10,8 +10,9 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    # binding.pry
     if 
-      # binding.pry
+      binding.pry
       @item.save
       @item.errors.messages
       redirect_to root_path  notice: "出品が完了しました"
