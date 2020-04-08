@@ -100,12 +100,11 @@
             = f.text_field :building, autofocus: true, autocomplete: "building", placeholder: "例）柳ビル103", class: "mypage-main__edit-user__fields__form"
 
 
-          .actions.mypage-main__edit-user__fields__btn-box
-            = f.submit "変更する", class: "mypage-main__edit-user__fields__btn-box__btn"
-            %br/
-      
-    
-        = link_to "戻る", :back
+            .actions.mypage-main__edit-user__fields__btn-box
+              = f.submit "変更する", class: "mypage-main__edit-user__fields__btn-box__btn"
+              %br/
+
+          = link_to "戻る", :back
 
   #{button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当にアカウントを削除しますか？" }, method: :delete, class: "btn btn-delete"}
 
