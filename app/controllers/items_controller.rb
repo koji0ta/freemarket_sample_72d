@@ -7,12 +7,10 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
   end
-
+  
   def create
     @item = Item.new(item_params)
-    # binding.pry
     if 
-      binding.pry
       @item.save
       @item.errors.messages
       redirect_to root_path  notice: "出品が完了しました"
@@ -31,4 +29,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name,:description,:status,:size,:cost,:days,:price,:category_id, images_attributes: [:image]).merge(user_id: current_user.id)
   end
 
+end
+
+  def show
+    @item = Item.find(params[:id])
+  end
 end

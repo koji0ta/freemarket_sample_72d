@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   resources :items, only:[:index,:new,:create,:show]
   resources :users, only: [:index, :edit, :update]
   resources :cards, only: [:index, :new]
-
+  
 end
