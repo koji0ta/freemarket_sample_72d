@@ -34,5 +34,10 @@
     長めになっているのでスニーカーと合わせると
     可愛く着用できると思います！
 
+  - if user_signed_in? && current_user.id == item.user_id
+  = link_to '削除', item_path, method: :delete
+
+
+
 = render partial: "top-appbanner"
 = render partial: "top-footer"
