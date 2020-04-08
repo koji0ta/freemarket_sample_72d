@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   
   def index
+    @items = Item.includes(:user).order("created_at DESC").page(params[:page]).per(5)
   end
 
   def new
@@ -28,8 +29,6 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name,:description,:status,:size,:cost,:days,:price,:category_id, images_attributes: [:image]).merge(user_id: current_user.id)
   end
-
-end
 
   def show
     @item = Item.find(params[:id])
