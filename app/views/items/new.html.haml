@@ -38,6 +38,7 @@
           %ul
             -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→categories
             %li.status-menu カテゴリ
+            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             -# = f.select :name, [['選択してください',0],['メンズ',1],['レディース',2],['キッズ',3]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
             -# = f.select  :name
             %li.status-menu 状態
