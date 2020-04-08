@@ -7,7 +7,14 @@
       .contents-box__user-box__profile-box
         %img(src="assets/icon/member_photo_noimage_thumb.png" alt="" class="icon")
         %h2.user-name
+          ユーザー名：
+          = @user.last_name
+          = @user.first_name
+          %br/
+          ニックネーム：
           = @user.nickname
+
+          
         
     .contents-box__news-box
       .mypage-tabs お知らせ

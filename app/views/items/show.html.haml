@@ -1,41 +1,49 @@
 = render partial: "top-header"
 .item-box
   .item-box__name
-    デニムパンツ  ダメージジーンズ
+    = @item.name
   .item-box__wording
-    『デニム パンツ ダメージジーンズ』は、72回の取引実績を持つたこさんから出品されました。デニム/ジーンズ/レディースの商品で、未定から1~2日で発送されます。
+    = "#{@item.name}は#{@user.nickname}さんから出品されました。#{@category.name}の商品で、#{@item.days}で発送されます。"
   .item-box__main-content
     .item-box__main-content__left-photo
-      = image_tag("item/item01.png")
+      -# - @images.each do |img|
+      -#   = image_tag(img)
     .item-box__main-content__right-table
       %ul 
         %li 出品者
-        %h1 鈴木
+        %h1
+          = @user.nickname
       %ul 
         %li カテゴリー
-        %h1 レディース
+        %h1
+          = @category.name
       %ul 
         %li サイズ
-        %h1 M
+        %h1
+          = @item.size
+          -# テーブルに名前がないから持って来れない
       %ul
         %li 状態
-        %h1 目立った傷や、汚れなし
+        %h1
+          = @item.status
+          -# テーブルに名前がないから持って来れない
+
   .item-box__price-box
     .item-box__price-box__item-price
-      ¥800
+      = "#{@item.price}円"
     .item-box__price-box__item-tax
       (税込み)
     .item-box__price-box__item-shipping
-      送料込み
+      = @item.cost
+      -# テーブルに名前がないから持って来れない
   .item-box__item-buybtn
     購入画面に進む
   .item-box__details
-    %p オーバーシルエットの切りっぱなしデニムです！
-    長めになっているのでスニーカーと合わせると
-    可愛く着用できると思います！
+    %p
+      = @item.description
 
-  - if user_signed_in? && current_user.id == item.user_id
-  = link_to '削除', item_path, method: :delete
+  - if user_signed_in? && current_user.id == @item.user_id
+    = link_to '削除', item_path, method: :delete
 
 
 

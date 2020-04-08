@@ -22,12 +22,15 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @user = @item.user
+    @category = Category.find(@item.category_id)
+    # @images = @item.images
   end
 
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to 'items/show'
+    redirect_to users_path
   end
 
   private
@@ -35,5 +38,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name,:description,:status,:size,:cost,:days,:price,:category_id, images_attributes: [:image]).merge(user_id: current_user.id)
   end
-  
+
 end
