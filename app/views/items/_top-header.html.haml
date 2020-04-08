@@ -20,7 +20,7 @@
       %ul.top-header__inner__nav__listsright
         - if user_signed_in?
           %li.top-header__inner__nav__listsright__mypage
-            = link_to "マイページ", edit_user_registration_path, class: "decoration-none"
+            = link_to "マイページ", "/users/#{current_user.id}", class: "decoration-none"
             -# ログアウトは仮
           %li.top-header__inner__nav__listsright__mypage
             = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "decoration-none"
