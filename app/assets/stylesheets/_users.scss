@@ -6,9 +6,7 @@
 
 .container {
   padding: 40px 70px 40px;
-  // margin: 40px 70px 0;
-  // background-color: #f5f5f5;
-  height: 1150px;
+  height: 1000px;
   width: 100%;
 
   .contents-box {
@@ -131,73 +129,5 @@
         
       }
     }
-  }
-
-  .side-box {
-    float: left;
-    margin: 0 40px 0 0;
-
-    &__contents-items {
-      display: flex;
-      flex-direction: column;
-      list-style: none;
-
-      li {
-        color: #555;
-        display: inline-block;
-        width: 400px;
-        height: 40px;
-        line-height: 40px;
-        padding-left: 20px;
-        margin-bottom: 2px;
-        background-color: #ddd;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
-
-      a{
-        text-decoration: none;
-        color: #555;
-      }
-
-        
-
-        &:hover{
-          color:#000;
-          background-color: #aaa;
-          cursor: pointer;
-          
-        }
-      }
-    }
-  }
-}
-
-.footer-sell-btn {
-  width: 120px;
-  background: #3CCACE;
-  text-align: center;
-  border-radius: 4%;
-  bottom: 32px;
-  right: 32px;
-  position: fixed;
-  padding: 15px;
-  cursor: pointer;
-
-  a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-  }
-
-  &__text {
-    color: #fff;
-    display: block;
-    font-size: 18px;
-    text-decoration: none;
-    margin-bottom: 5px;
-
-  }
-  img {
-    width: 60%;
-    margin-top: 5px;
   }
 }

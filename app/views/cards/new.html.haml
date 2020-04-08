@@ -1,5 +1,10 @@
-.cards-new
-  %h2.cards-new__top
-    クレジットカード情報入力
-  .cards-new__container
-    .cards-new__container__margin
+= render partial: "devise/header_view"
+.cards
+  = render partial: "users/side-box"
+  .cards-new
+    %h2.cards-new__top
+      クレジットカード情報入力
+    .cards-new__container
+      .cards-new__container__margin
+
+= render partial: "devise/footer_view"

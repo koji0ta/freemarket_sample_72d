@@ -1,0 +1,30 @@
+.side-box
+  .side-box__contents-items
+    %li
+      = link_to "トップページ", ("/")
+    %li
+      = link_to "マイページ編集", edit_user_registration_path
+    %li
+      %a お知らせ
+    %li
+      %a やることリスト
+    %li
+      = link_to "出品する", ("items/new")
+    %li
+      %a 下書き一覧
+    %li
+      %a 購入した商品-取引中
+    %li
+      %a 購入した商品-過去の取引
+    %li
+      %a プロフィール
+    %li
+      = link_to "お支払い方法", ("cards")
+    %li
+      = link_to "ログアウト", destroy_user_session_path, method: :delete
+
+.footer-sell-btn
+  %span.top-exhibit-btn__text
+  = link_to "items/new" do
+    = "出品する"
+    = image_tag("icon/icon_camera.png")
