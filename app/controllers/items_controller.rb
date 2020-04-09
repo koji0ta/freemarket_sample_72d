@@ -34,11 +34,21 @@ class ItemsController < ApplicationController
     redirect_to 'items/show'
   end
 
-  private
-      
-  def item_params
-    params.require(:item).permit(:name,:description,:status,:size,:cost,:days,:price,:category_id, images_attributes: [:image]).merge(user_id: current_user.id)
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
 
+  private
+      
+  def item_params
+    params.require(:item).permit(:name,:description,:status,:size,:cost,:days,:price,:category_id, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
 end
+
