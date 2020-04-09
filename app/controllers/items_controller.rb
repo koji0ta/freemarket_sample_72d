@@ -24,6 +24,8 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @user = @item.user
     @category = Category.find(@item.category_id)
+    @images = @item.images
+
     @status = Status.find(@item.status)
     @size = Size.find(@item.size)
     @cost = Cost.find(@item.cost)
@@ -42,6 +44,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name,:description,:status,:size,:cost,:days,:price,:category_id, images_attributes: [:image]).merge(user_id: current_user.id)
   end
-
 
 end
