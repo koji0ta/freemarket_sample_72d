@@ -308,9 +308,11 @@ a:hover {
           width: 220px;
           display: inline-block;
           float: left;
+          margin: 16px;
           a {
             background-color: #fff;
             display: inline-block;
+            text-decoration: none;
           }
           &__img {
             width: 220px;
