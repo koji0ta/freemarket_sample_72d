@@ -37,18 +37,22 @@
       = @item.cost
       -# テーブルに名前がないから持って来れない
   .item-box__item-buybtn
-    購入画面に進む
+  - if user_signed_in? && current_user.id == @item.user_id
+    = link_to "購入画面に進む", ("#"), class: :buybtn
+  - else
+    = link_to '購入画面に進む', ("#"), class: :bbb
   .item-box__details
     %p
       = @item.description
 
   - if user_signed_in? && current_user.id == @item.user_id
+    = link_to "編集", ("#"), method: :get 
     = link_to '削除', item_path, method: :delete
 
 
 
-  - if user_signed_in? && current_user.id == item.user_id
-  = link_to '削除', item_path, method: :delete
+  -# - if user_signed_in? && current_user.id == item.user_id
+  -#   = link_to '削除', item_path, method: :delete
 
 
 
