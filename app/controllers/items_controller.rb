@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
+    @user = @item.user
+    @place = Place.find_by(@user)
   end
   
   def create
