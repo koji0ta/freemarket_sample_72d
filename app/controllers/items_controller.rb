@@ -24,7 +24,12 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @user = @item.user
     @category = Category.find(@item.category_id)
-    # @images = @item.images
+    @images = @item.images
+
+    @status = Status.find(@item.status)
+    @size = Size.find(@item.size)
+    @cost = Cost.find(@item.cost)
+    @days = Days.find(@item.days)
   end
 
 

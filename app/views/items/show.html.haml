@@ -3,7 +3,7 @@
   .item-box__name
     = @item.name
   .item-box__wording
-    = "#{@item.name}は#{@user.nickname}さんから出品されました。#{@category.name}の商品で、#{@item.days}で発送されます。"
+    = "#{@item.name}は#{@user.nickname}さんから出品されました。#{@category.name}の商品で、#{@days.name}されます。"
   .item-box__main-content
     .item-box__main-content__left-photo
       -# - @images.each do |img|
@@ -20,13 +20,12 @@
       %ul 
         %li サイズ
         %h1
-          = @item.size
-          -# テーブルに名前がないから持って来れない
+          = @size.name
+          
       %ul
         %li 状態
         %h1
-          = @item.status
-          -# テーブルに名前がないから持って来れない
+          = @status.name
 
   .item-box__price-box
     .item-box__price-box__item-price
@@ -34,23 +33,18 @@
     .item-box__price-box__item-tax
       (税込み)
     .item-box__price-box__item-shipping
-      = @item.cost
-      -# テーブルに名前がないから持って来れない
+      = @cost.name
   .item-box__item-buybtn
-    購入画面に進む
+  - if user_signed_in? && current_user.id == @item.user_id
+  - else
+    = link_to '購入画面に進む', ("#"), class: :buybtn
   .item-box__details
     %p
       = @item.description
 
   - if user_signed_in? && current_user.id == @item.user_id
+    = link_to "編集", ("#"), method: :get 
     = link_to '削除', item_path, method: :delete
-
-
-
-  - if user_signed_in? && current_user.id == item.user_id
-  = link_to '削除', item_path, method: :delete
-
-
 
 = render partial: "top-appbanner"
 = render partial: "top-footer"
