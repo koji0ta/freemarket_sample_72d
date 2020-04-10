@@ -1,0 +1,112 @@
+= render partial: "devise/header_view"
+
+#item-edit-page.item-edit-page
+  .item-edit-page__inner
+  %h2
+    商品情報編集
+    .item-edit-form
+      = form_with model: @item do |f|
+
+        .field
+          = f.label "出品画像", class: "field-label"
+          %span.form-require 必須
+          %br/
+          .form-explain 最大10枚までアップロードできます
+          #image-box
+            #previews
+              - if @item.persisted?
+                - @images.each_with_index do |image, i|
+                  = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+                  
+            = f.fields_for :images do |image|
+              .js-file_group{data:{ index: image.index }}
+                = image.file_field :image, class: 'js-file'
+                %span.js-remove 削除
+              - if @item.persisted?
+                = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+            - if @item.persisted?
+              .js-file_group{data:{ index: @images.count }}
+                = file_field_tag :image, name: "item[images_attributes][#{@images.count}][src]", class: 'js-file'
+                .js-remove 削除
+
+
+          -# .clearfix
+          -#   %ul#previews
+
+                  -# %li.image-preview
+                  -#   %label.upload-label{style: "display: none;"}
+                  -#     .upload-label__text
+                  -#       ドラッグアンドドロップ
+                  -#       %br
+                  -#       またはクリックしてファイルをアップロード
+                  -#       .input-area
+                  -#         = image.file_field :id, value: img.id, class: "hidden image_upload"
+                  -#         = image.hidden_field :id, value: img.id, name: "item[image][#{index}]"
+                  -#   .image-preview__wapper
+                  -#     = image_tag img.image.url, class: "preview"
+                  -#   .image-preview_btn
+                  -#     .image-preview_btn_edit 編集
+                  -#     .image-preview_btn_delete 削除
+
+        .field
+          = f.label "商品名", class: "field-label"
+          %span.form-require 必須
+          %br/
+          = f.text_field :name, placeholder: "商品名", class: "field-input"
+          %br/
+
+        .field
+          = f.label "価格", class: "field-label"
+          %span.form-require 必須
+          %br/
+          = f.text_field :price, placeholder: "価格"
+          %br/
+
+        .field
+          = f.label "商品の説明", class: "field-label"
+          %span.form-require 必須
+          %br/
+          = f.text_area :description, placeholder: "商品の説明"
+          %br/
+
+        .field
+          = f.label "状態", class: "field-label"
+          %span.form-require 必須
+          %br/
+          = f.text_field :status, placeholder: "状態"
+          %br/
+
+        .field
+          = f.label "配送料", class: "field-label"
+          %span.form-require 必須
+          %br/
+          = f.text_field :cost, placeholder: "配送料"
+          %br/
+
+        .field
+          = f.label "発送までの日数", class: "field-label"
+          %span.form-require 必須
+          %br/
+          = f.text_field :days, placeholder: "発送までの日数"
+          %br/
+
+        .field
+          = f.label "サイズ", class: "field-label"
+          %span.form-optional 任意
+          %br/
+          = f.text_field :size, placeholder: "サイズ"
+          %br/
+
+        .field
+          = f.label "カテゴリー", class: "field-label"
+          %span.form-require 必須
+          %br/
+          = f.collection_select(:category_id, Category.all, :id, :name)
+          %br/
+
+        .actions
+          = f.submit "送信"
+
+= link_to "削除", @item, method: :delete
+
+= render partial: "devise/footer_view"
