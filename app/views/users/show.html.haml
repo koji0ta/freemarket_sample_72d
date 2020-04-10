@@ -47,38 +47,8 @@
             .text 購入履歴2
             .time 2時間前
 
-  .side-box
-    .side-box__contents-items
-      %li
-        = link_to "トップページ", ("/")
-      %li
-        = link_to "マイページ編集", edit_user_registration_path
-      %li
-        %a お知らせ
-      %li
-        %a やることリスト
-      %li
-        = link_to "出品する", ("items/new")
-      %li
-        %a 下書き一覧
-      %li
-        %a 購入した商品-取引中
-      %li
-        %a 購入した商品-過去の取引
-      %li
-        %a プロフィール
-      %li
-        = link_to "お支払い方法", "#"
-      %li
-        = link_to "ログアウト", destroy_user_session_path, method: :delete
-
-.footer-sell-btn
-  %span.top-exhibit-btn__text
-  -# %= label object_name, method, {}
-  = link_to "items/new" do
-    = "出品する"
-    = image_tag("icon/icon_camera.png")
-
+  = render partial: "users/side-box"
+  
 = render partial: "devise/footer_view"
 
 

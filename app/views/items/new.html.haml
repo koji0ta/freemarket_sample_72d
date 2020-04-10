@@ -49,25 +49,23 @@
           = f.label "商品の詳細", class: "items-text"
           %span.require 必須
           %ul
-            -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→categories
             %li.status-menu カテゴリ
             = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.status-menu 状態
-            = f.select :status, [['選択してください',0],['新品',1],['ほぼ新品',2],['傷あり',3],['汚れあり',4]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
+            = f.collection_select :status, Status.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.status-menu サイズ
-            = f.select :size, [['選択してください',0],['S',1],['M',2],['L',3],['LL',4]], {include_blank: false, selected: 0 }, {class:"item-select-field"} 
+            = f.collection_select :size, Size.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}            
       .item-new-box
         .item-new-box__send
           = f.label "配送について", class: "items-text"
           %span.require 必須
           %ul
             %li.send-menu 配送料の負担
-            = f.select :cost, [['選択してください',0],['送料込み(出品者負担)',1],['着払い(購入者負担)',2]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
+            = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.send-menu 発送元の地域
-            -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→places
-            -# = f.select :prefecture, [['選択してください',0],['北海道',1],['青森',2]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
+            = @place.prefecture
             %li.send-menu 発送までの日数
-            = f.select :days, [['選択してください',0],['1〜2日で発送',1],['2〜3日で発送',2],['4〜7日で発送',3]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
+            = f.collection_select :days, Days.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
       .item-new-box
         .item-new-box__price
           = f.label "販売価格", class: "items-text"
