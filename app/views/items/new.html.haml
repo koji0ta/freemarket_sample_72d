@@ -49,7 +49,6 @@
           = f.label "商品の詳細", class: "items-text"
           %span.require 必須
           %ul
-            -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→categories
             %li.status-menu カテゴリ
             = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.status-menu 状態
@@ -64,8 +63,7 @@
             %li.send-menu 配送料の負担
             = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.send-menu 発送元の地域
-            -# このカテゴリは保存するテーブルがitemsではないが大丈夫か→places
-            -# = f.select :prefecture, [['選択してください',0],['北海道',1],['青森',2]],{ include_blank: false, selected: 0 },{class:"item-select-field"} 
+            = @place.prefecture
             %li.send-menu 発送までの日数
             = f.collection_select :days, Days.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
       .item-new-box
