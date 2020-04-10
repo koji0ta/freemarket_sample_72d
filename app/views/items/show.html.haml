@@ -36,9 +36,8 @@
       = @cost.name
   .item-box__item-buybtn
   - if user_signed_in? && current_user.id == @item.user_id
-    = link_to "購入画面に進む", ("#"), class: :buybtn
   - else
-    = link_to '購入画面に進む', ("#"), class: :bbb
+    = link_to '購入画面に進む', ("#"), class: :buybtn
   .item-box__details
     %p
       = @item.description
