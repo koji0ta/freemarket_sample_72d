@@ -28,8 +28,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @images = Image.where(item_id: @item.id)
-    @images = @item.images
+    if user_signed_in? && current_user.id == @item.user_id
+      # @images = Image.where(item_id: @item.id)
+      @images = @item.images
+    else
+      redirect_to root_path
+    end
   end
 
   def update
