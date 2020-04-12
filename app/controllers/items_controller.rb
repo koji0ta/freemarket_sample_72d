@@ -7,8 +7,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    @user = @item.user
-    @place = Place.find_by(@user)
+    @place = Place.find_by(user_id: current_user.id)
   end
   
   def create
@@ -38,7 +37,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to 'items/show'
+    redirect_to user_path(current_user)
   end
 
   def update
