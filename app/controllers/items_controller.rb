@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if 
       @item.save
-      @item.errors.messages
       redirect_to root_path  notice: "出品が完了しました"
     else
       render :new

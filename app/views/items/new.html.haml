@@ -1,6 +1,7 @@
 = render partial: "devise/header_view"
 
 .items-new
+  = render partial: "new_error_message"
   .item-new
     = form_for (@item) do |f| 
       .item-new-box
@@ -50,10 +51,13 @@
           %span.require 必須
           %ul
             %li.status-menu カテゴリ
+            %span.require 必須
             = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.status-menu 状態
+            %span.require 必須
             = f.collection_select :status, Status.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.status-menu サイズ
+            %span.require_size 任意
             = f.collection_select :size, Size.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}            
       .item-new-box
         .item-new-box__send
@@ -61,13 +65,15 @@
           %span.require 必須
           %ul
             %li.send-menu 配送料の負担
+            %span.require 必須
             = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.send-menu 発送元の地域
+            %span.require 必須
             = @place.prefecture
             %br/
             %br/
-
             %li.send-menu 発送までの日数
+            %span.require 必須
             = f.collection_select :days, Days.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
       .item-new-box
         .item-new-box__price
@@ -81,6 +87,6 @@
       .item-new-box
         .item-new-box__submit
           = f.submit  "出品する",  class:"new-item-sell"
-          -# = f.submit  "下書きに保存する",  class:"new-item-save"
+          = f.submit  "下書きに保存する",  class:"new-item-save"
 
 = render partial: "devise/footer_view"
