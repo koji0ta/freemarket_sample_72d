@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, only: [:edit, :show, :update, :destroy]
+  # before_action :set_user, only: [:edit, :show, :update, :destroy]
 
   def index
     @items = Item.includes(:user).order("created_at DESC").page(params[:page]).per(5)
@@ -25,9 +25,11 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @user = current_user
   end
 
   def edit
+    @place = Place.find_by(user_id: current_user.id)
     if user_signed_in? && current_user.id == @item.user_id
       # @images = Image.where(item_id: @item.id)
       @images = @item.images
@@ -37,16 +39,14 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
-      redirect_to item_path, notice: '商品情報の編集が完了しました'
+      redirect_to edit_item_path, notice: '商品情報の編集が完了しました'
     else
       render :edit, notice: '商品情報の編集ができません'
     end
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     redirect_to root_path, notice: '商品情報を削除しました'
   end
@@ -55,5 +55,9 @@ class ItemsController < ApplicationController
       
   def item_params
     params.require(:item).permit(:name, :description, :status, :size, :cost, :days, :price, :category_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
