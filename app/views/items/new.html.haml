@@ -10,10 +10,6 @@
           %span.require 必須
           %p.upload-image  最大10枚までアップロードできます
           .item-new-box__image__field#image_field
-            -# .item-new-box__image__field__nav
-            -#   =icon('fa','camera')
-            -#   %p.image_nav  ドラックアンドドロップ
-            -#   %p.image_nav  もしくはファイルからアップロードできます
             #image-box
               #previews
                 -if @item.persisted?
