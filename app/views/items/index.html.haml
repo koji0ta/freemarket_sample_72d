@@ -105,7 +105,7 @@
           .top-main__pickup__productbox__lists__list
             = link_to item_path(item.id) do
               .top-main__pickup__productbox__lists__list__img
-                -# = image_tag item.images.first.image.url藤井
+                = image_tag item.images.first.image.url if item.images.present?
               .top-main__pickup__productbox__lists__list__body
                 %h3.top-main__pickup__productbox__lists__list__body__name
                   = item.name
@@ -131,7 +131,7 @@
           .top-main__pickup__productbox__lists__list
             = link_to item_path(item.id) do
               .top-main__pickup__productbox__lists__list__img
-                -# = image_tag item.images.first.image.url藤井
+                = image_tag item.images.first.image.url if item.images.present?
               .top-main__pickup__productbox__lists__list__body
                 %h3.top-main__pickup__productbox__lists__list__body__name
                   = item.name
