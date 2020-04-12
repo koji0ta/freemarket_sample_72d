@@ -69,7 +69,9 @@
             = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
             %li.send-menu 発送元の地域
             %span.require 必須
-            = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
+            = @place.prefecture
+            %br/
+            %br/
             %li.send-menu 発送までの日数
             %span.require 必須
             = f.collection_select :days, Days.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
