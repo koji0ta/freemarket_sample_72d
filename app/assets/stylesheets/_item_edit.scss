@@ -1,0 +1,125 @@
+.item-edit-page {
+
+  &__inner {
+    box-sizing: border-box;
+
+    &__title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .item-edit-form {
+      margin: 0 auto;
+      width: 700px;
+
+      &__form-box {
+        padding: 20px 10px ;
+
+        .item-text-field {
+          margin-bottom: 10px;
+          width: 100%;
+          height: 100px;
+        }
+
+        .field-label {
+          font-size: 14px;
+          margin-bottom: 10px;
+          display: inline-block;
+        }
+
+        .item-input-field {
+          margin-bottom: 10px;
+          width: 100%;
+        }
+
+        .item-input-number {
+          width: 50%;
+          float: right;
+          text-align: right;
+        }
+
+        .item-select-field {
+          margin-bottom: 10px;
+          width: 100%;
+        }
+
+        .style-counter {
+          text-align: right;
+          font-size: 8px;
+        }
+
+        .status-menu {
+          margin-bottom: 10px;
+        }
+
+        .send-menu {
+          margin-bottom: 10px;
+        }
+
+        .yen {
+          padding-left: 200px;
+        }
+
+        &__image {
+
+          .form-explain {
+            font-size: 14px;
+          }
+
+          #image-box {
+            width: 100%;
+            margin-top: 10px;
+            border: dotted 1px;
+            background: #f5f5f5;
+            cursor: pointer;
+
+            .preview_image{
+              width: calc(100% - 80%);
+              margin: 2px;
+            }
+          }
+        }
+
+        .market-place-fee {
+          font-size: 14px;
+          margin: 20px 0px 10px 0px;
+
+          .tax {
+            display: inline-block;
+            float: right;
+            margin-right: 20px;
+          }
+        }
+
+        .submit-btn {
+          width: 50%;
+          display: block;
+          margin: 10px auto;
+          border-radius : 5%;
+          font-size     : 16px;
+          cursor        : pointer;
+          padding       : 10px 10px;
+          background    :green;
+          color         :#ffffff;
+          line-height   : 1em;
+        }
+
+        .delete-btn {
+          width: 50%;
+          display: block;
+          margin: 10px auto;
+          border-radius : 5%;
+          font-size     : 16px;
+          cursor        : pointer;
+          padding       : 10px 10px;
+          background    :red;
+          color         :#ffffff;
+          line-height   : 1em;
+          text-align: center;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

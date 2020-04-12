@@ -4,16 +4,14 @@
   .item-box__name
     = @item.name
   .item-box__wording
-    = "#{@item.name}は#{@user.nickname}さんから出品されました。#{@category.name}の商品で、#{@days.name}されます。"
+    = "#{@item.name}は#{current_user.nickname}さんから出品されました。#{@category.name}の商品で、#{@days.name}されます。"
   .item-box__main-content
     .item-box__main-content__left-photo
-      -# - @images.each do |img|
-      -#   = image_tag(img)
     .item-box__main-content__right-table
       %ul 
         %li 出品者
         %h1
-          = @user.nickname
+          = current_user.nickname
       %ul 
         %li カテゴリー
         %h1
