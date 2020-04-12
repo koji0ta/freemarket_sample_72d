@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  # before_action :set_user, only: [:edit, :show, :update, :destroy]
 
   def index
     @items = Item.includes(:user).order("created_at DESC").page(params[:page]).per(5)
@@ -9,15 +8,13 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    @user = @item.user
-    @place = Place.find_by(@user)
+    @place = Place.find_by(user_id: current_user.id)
   end
   
   def create
     @item = Item.new(item_params)
     if 
       @item.save
-      @item.errors.messages
       redirect_to root_path  notice: "出品が完了しました"
     else
       render :new
@@ -31,7 +28,6 @@ class ItemsController < ApplicationController
   def edit
     @place = Place.find_by(user_id: current_user.id)
     if user_signed_in? && current_user.id == @item.user_id
-      # @images = Image.where(item_id: @item.id)
       @images = @item.images
     else
       redirect_to root_path
