@@ -9,7 +9,7 @@
     %li
       %a やることリスト
     %li
-      = link_to "出品する", ("items/new")
+      = link_to "出品する", new_item_path
     %li
       %a 下書き一覧
     %li
@@ -25,6 +25,6 @@
 
 .footer-sell-btn
   %span.top-exhibit-btn__text
-  = link_to "items/new" do
+  = link_to new_item_path do
     = "出品する"
     = image_tag("icon/icon_camera.png")

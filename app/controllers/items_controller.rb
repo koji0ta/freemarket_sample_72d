@@ -8,15 +8,13 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    @user = @item.user
-    @place = Place.find_by(@user)
+    @place = Place.find_by(user_id: current_user.id)
   end
   
   def create
     @item = Item.new(item_params)
     if 
       @item.save
-      @item.errors.messages
       redirect_to root_path  notice: "出品が完了しました"
     else
       render :new
