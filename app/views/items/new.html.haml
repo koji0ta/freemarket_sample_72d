@@ -10,7 +10,11 @@
           %span.require 必須
           %p.upload-image  最大10枚までアップロードできます
           .item-new-box__image__field#image_field
-            #image-box
+            -# .item-new-box__image__field__nav
+            -#   =icon('fa','camera')
+            -#   %p.image_nav  ドラックアンドドロップ
+            -#   %p.image_nav  もしくはファイルからアップロードできます
+            #image-box  
               #previews
                 -if @item.persisted?
                   -@item.images.each_with_index do |image,i|
@@ -25,24 +29,22 @@
                 %div{data:{index: @item.image.count},class: "js-file_group"}
                   = file_field_tag :src,name: "item[images_attributes][#{@item.images.count}][src]", class: 'js_file'
                   %span.js-remove 削除
-
       .item-new-box
         .item-new-box__name
-          = f.label "商品名", class: "items-text"
+          = f.label  "商品名" ,class: "items-text"
           %span.require 必須
           %br/
-          = f.text_field :name, class: "item-input-field", placeholder: "40文字まで"
+          = f.text_field :name,class:"item-input-field", placeholder:"40文字まで"
           %br/ 
-          = f.label  "商品の説明", class: "items-text"
+          = f.label  "商品の説明" ,class: "items-text"
           %span.require 必須
           %br/
-          = f.text_area :description, class: "item-text-field", placeholder: "商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
+          = f.text_area :description,class:"item-text-field" , placeholder:"商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
           %br/
           %p.style-counter
             %span 0
             %span /
             %span 1000
-
       .item-new-box
         .item-new-box__status
           = f.label "商品の詳細", class: "items-text"
@@ -78,7 +80,7 @@
           = f.label "販売価格", class: "items-text"
           %span.require 必須
           %span.en ￥
-          = f.number_field :price, class: "item-input-number"
+          = f.number_field :price,class:"item-input-number"
         .item-new-box__tax
           販売手数料(10%)
           %span.price-tax  -
