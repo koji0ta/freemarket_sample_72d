@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @place = Place.find_by(user_id: current_user.id)
+    @parents = Category.where("ancestry IS NULL").order("id ASC")
   end
   
   def create
