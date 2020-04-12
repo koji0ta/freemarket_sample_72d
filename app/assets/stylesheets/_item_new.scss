@@ -7,7 +7,7 @@
       padding: 20px 10px ;
       .items-text{
         font-size: 14px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
         display: inline-block;
       }
       .item-input-field{
@@ -62,16 +62,29 @@
       &__status{
         .status-menu{
           margin-bottom: 10px;
+          float: left;
+        }
+        .require_size {
+          display: inline-block;
+          padding: 2px;
+          background-color: gray;
+          color: white;
+          margin-left: 10px;
+          border-radius: 5px;
+          font-size: smaller;
         }
       }
       &__send{
         .send-menu{
           margin-bottom: 10px;
+          float: left;
         }
       }
       &__price{
+        position: relative;
         .en{
-          padding-left: 200px;
+          position: absolute;
+          left: 315px;
         }
       }
       &__tax{
