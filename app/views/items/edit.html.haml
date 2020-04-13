@@ -55,22 +55,22 @@
           %span.form-require 必須
           %ul
             %li.status-menu カテゴリ
-            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false, selected: 1}, {class: "item-select-field"}
+            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
             %li.status-menu 状態
-            = f.collection_select :status, Status.all, :id, :name, {include_blank: false, selected: 1}, {class: "item-select-field"}
+            = f.collection_select :status, Status.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
             %li.status-menu サイズ
-            = f.collection_select :size, Size.all, :id, :name, {include_blank: false, selected: 1}, {class: "item-select-field"}
+            = f.collection_select :size, Size.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
 
         .item-edit-form__form-box
           = f.label "配送について", class: "field-label"
           %span.form-require 必須
           %ul
             %li.send-menu 配送料の負担
-            = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false, selected: 1}, {class: "item-select-field"}
+            = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
             %li.send-menu 発送元の地域
             = @place.prefecture
             %li.send-menu 発送までの日数
-            = f.collection_select :days, Days.all, :id, :name, {include_blank: false, selected: 1}, {class: "item-select-field"}
+            = f.collection_select :days, Days.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
 
         .item-edit-form__form-box
           = f.label "販売価格", class: "field-label"
