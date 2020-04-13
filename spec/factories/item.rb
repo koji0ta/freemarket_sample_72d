@@ -9,5 +9,5 @@ FactoryBot.define do
     days              {"2"}
     size              {"2"}
   end
-
+  
 end

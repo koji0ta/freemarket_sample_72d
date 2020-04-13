@@ -20,12 +20,24 @@ ja:
         city_name: "市区町村"
         address: "番地"
         building: "建物名"
+      item:
+        name: "商品名"
+        price: "販売価格"
+        description: "商品の説明"
+        status: "商品の状態"
+        cost: "配送料の負担"
+        category_id: "カテゴリー"
+        images: "出品画像"
+        days: "発送までの日数"
+
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      
+
   date:
     abbr_day_names:
     - 日
