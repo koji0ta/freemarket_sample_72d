@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to edit_item_path, notice: '商品情報の編集が完了しました'
+      redirect_to item_path, notice: '商品情報の編集が完了しました'
     else
       render :edit, notice: '商品情報の編集ができません'
     end
