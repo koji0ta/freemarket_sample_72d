@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-img {
-  width: 100%;
-  vertical-align: bottom;
-}
-
 .decoration-none {
   text-decoration: none;
   color: black;
@@ -60,6 +55,10 @@ a:hover {
             background-color: #3CCACE;
             padding: 6px;
           }
+          img {
+            width: 100%;
+            vertical-align: bottom;
+          }
         }
       }
     }
@@ -110,6 +109,10 @@ a:hover {
 
 .top-main {
   background-color: white;
+  img {
+    width: 100%;
+    vertical-align: bottom;
+  }
   &__image {
     width: 100%;
     height: 560px;
@@ -395,6 +398,10 @@ a:hover {
   color:white;
   background-color: rgb(26, 25, 25);
   text-align: center;
+  img {
+    width: 100%;
+    vertical-align: bottom;
+  }
   &__contents {
     max-width: 840px;
     margin: 0 auto;

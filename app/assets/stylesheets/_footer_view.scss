@@ -8,16 +8,17 @@
   padding: 40px 0 0 0;
   text-align: center;
   clear: both;
-  &__nav{
-    ul{
+
+  &__nav {
+    ul {
       list-style: none;
 
-      li{
+      li {
         display: inline-block;
         font-size: 12px;
         margin: 0 0 0 16px;
 
-        a{
+        a {
           text-decoration: none;
           color: #333;
         }
@@ -25,20 +26,19 @@
     }  
   }
 
-  &__logo{
-    width: 80px;
-    height: 65px;
+  &__logo {
     margin: 30px auto 0;
     display: block;
     color: #333;
-    a{
+
+    a {
       display: block;
       color: #333;
     }
   }
   
-  &__inc{
-    p{
+  &__inc {
+    p {
       font-size: 10px;
       margin-left: 30px;
     }
