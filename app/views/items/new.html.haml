@@ -79,12 +79,9 @@
           %span.require 必須
           %span.en ￥
           = f.number_field :price, class: "item-input-number"
-        .item-new-box__tax
-          販売手数料(10%)
-          %span.price-tax  -
+        
       .item-new-box
         .item-new-box__submit
           = f.submit  "出品する",  class:"new-item-sell"
-          = f.submit  "下書きに保存する",  class:"new-item-save"
 
 = render partial: "devise/footer_view"
