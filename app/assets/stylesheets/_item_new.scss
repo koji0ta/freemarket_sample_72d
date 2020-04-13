@@ -19,6 +19,7 @@
       .item-input-field {
         margin-bottom: 10px;
         width: 100%;
+        height: 50px;
       }
       .item-input-number{
         position: absolute;
@@ -32,6 +33,7 @@
       .item-select-field {
         margin-bottom: 10px;
         width: 100%;
+        height: 45px;
       }
 
       &__image {
@@ -100,13 +102,15 @@
       }
       &__send{
         &__prefecture{
+          height: 45px;
+          line-height: 45px;
           display: inline-block;
           text-align: start;
           box-sizing: border-box;
           background-color: rgb(248, 248, 248);
           cursor: default;
           margin: 0em;
-          font: 400 11px system-ui;
+          font: 400 11px ;
           border-radius: 5px;
           border-width: 1px;
           border-style: solid;

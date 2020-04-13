@@ -78,7 +78,7 @@
           = f.label "販売価格", class: "items-text"
           %span.require 必須
           %span.en ￥
-          = f.number_field :price, class: "item-input-number"
+          = f.number_field :price, min: 0, class: "item-input-number"
         
       .item-new-box
         .item-new-box__submit
