@@ -18,7 +18,7 @@ $(document).on('turbolinks:load', ()=> {
   }
   // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px" class="preview-image">`;
     return html;
   }
 
