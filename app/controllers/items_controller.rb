@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
       @item.images.new
       render :new
     end
+    # revertテスト用の記述です(見つけたら削除して下さい)
   end
 
   def show
