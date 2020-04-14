@@ -1,7 +1,9 @@
 .items-new {
   box-sizing: border-box;
-
-  .item-new {
+  .items-new-error-message{
+    text-align: center;
+  }
+  .item-new{
     margin: 0 auto;
     width: 700px;
 
@@ -17,17 +19,21 @@
       .item-input-field {
         margin-bottom: 10px;
         width: 100%;
+        height: 50px;
       }
-
-      .item-input-number {
+      .item-input-number{
+        position: absolute;
+        display: inline-block;
+        right: 0px;
+        top: 0;
         width: 50%;
-        float: right;
         text-align: right;
       }
 
       .item-select-field {
         margin-bottom: 10px;
         width: 100%;
+        height: 45px;
       }
 
       &__image {
@@ -94,10 +100,29 @@
           font-size: smaller;
         }
       }
-
-      &__send {
-
-        .send-menu {
+      &__send{
+        &__prefecture{
+          height: 45px;
+          line-height: 45px;
+          display: inline-block;
+          text-align: start;
+          box-sizing: border-box;
+          background-color: rgb(248, 248, 248);
+          cursor: default;
+          margin: 0em;
+          font: 400 11px ;
+          border-radius: 5px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(166, 166, 166);
+          border-image: initial;
+          margin-bottom: 10px;
+          width: 100%;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+        .send-menu{
           margin-bottom: 10px;
           float: left;
         }

@@ -1,7 +1,8 @@
 = render partial: "devise/header_view"
 
 .items-new
-  = render partial: "new_error_message"
+  .items-new-error-message
+    = render partial: "new_error_message"
   .item-new
     = form_for (@item) do |f| 
       .item-new-box
@@ -48,7 +49,7 @@
           = f.label "商品の詳細", class: "items-text"
           %span.require 必須
           %ul
-            %li.status-menu カテゴリ
+            %li.status-menu カテゴリー
             %span.require 必須
             = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
             %li.status-menu 状態
@@ -67,9 +68,8 @@
             = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
             %li.send-menu 発送元の地域
             %span.require 必須
-            = @place.prefecture
-            %br/
-            %br/
+            .item-new-box__send__prefecture
+              = @place.prefecture
             %li.send-menu 発送までの日数
             %span.require 必須
             = f.collection_select :days, Days.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
@@ -78,7 +78,7 @@
           = f.label "販売価格", class: "items-text"
           %span.require 必須
           %span.en ￥
-          = f.number_field :price, class: "item-input-number"
+          = f.number_field :price, min: 0, class: "item-input-number"
         
       .item-new-box
         .item-new-box__submit

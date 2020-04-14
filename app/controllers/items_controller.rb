@@ -13,10 +13,12 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
+    @item.whether_sale = true
+    @place = Place.find_by(user_id: current_user.id)
     if @item.save
-      redirect_to root_path, notice: "出品が完了しました"
+      redirect_to root_path
     else
-      @place = Place.find_by(user_id: current_user.id)
+      @item.images.new
       render :new
     end
   end
