@@ -12,4 +12,5 @@ class Item < ApplicationRecord
   validates :status, :cost, :days, :category_id, format:{ without:/[1]/, message: "選択してしてください" }
   validates_associated :images
   validates :images, presence: true
+
 end

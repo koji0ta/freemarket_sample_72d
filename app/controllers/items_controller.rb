@@ -15,7 +15,8 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @place = Place.find_by(user_id: current_user.id)
     if 
-      @item.whether_sale = true
+      #出品中であることをtrueで表現
+      # @item.whether_sale = true
       @item.save
       redirect_to root_path
     else
