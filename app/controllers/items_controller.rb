@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @user = @item.user
     @category = Category.find(@item.category_id)
-    # @images = @item.images
   end
 
 
