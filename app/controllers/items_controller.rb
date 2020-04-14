@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path, notice: "出品が完了しました"
     else
+      @place = Place.find_by(user_id: current_user.id)
       render :new
     end
   end
