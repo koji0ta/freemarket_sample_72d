@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
       @item.images.new
       render :new
     end
-    aaa
   end
 
   def show
