@@ -1,9 +1,8 @@
 $(function(){
   // 文字カウントしてみた
-  $(".item-text-field").on('keyup',function(){
+  $("#description").on('keyup',function(){
     $(".style-counter").text($(this).val().length + '/1000');
   });
-});
 
 $(document).on('turbolinks:load', ()=> {
   // 画像用のinputを生成する関数
