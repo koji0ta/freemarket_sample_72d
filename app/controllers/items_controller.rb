@@ -13,17 +13,30 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
+    @item.whether_sale = true
     @place = Place.find_by(user_id: current_user.id)
-    if 
-      #出品中であることをtrueで表現
-      @item.whether_sale = true
-      @item.save
+    if @item.save
       redirect_to root_path
     else
       @item.images.new
       render :new
     end
   end
+
+
+  # def create
+  #   @item = Item.new(item_params)
+  #   @place = Place.find_by(user_id: current_user.id)
+  #   if 
+  #     #出品中であることをtrueで表現
+  #     @item.whether_sale = true
+  #     @item.save
+  #     redirect_to root_path
+  #   else
+  #     @item.images.new
+  #     render :new
+  #   end
+  # end
 
   def show
     @item = Item.find(params[:id])
