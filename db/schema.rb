@@ -50,17 +50,6 @@ ActiveRecord::Schema.define(version: 2020_04_13_141820) do
     t.boolean "whether_sale", default: false, null: false
   end
 
-  create_table "places", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "post_code", null: false
-    t.string "prefecture", null: false
-    t.string "city_name", null: false
-    t.string "address", null: false
-    t.string "building"
-    t.integer "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "last_name", null: false
     t.string "first_name", null: false
