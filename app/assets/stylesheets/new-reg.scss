@@ -37,6 +37,8 @@
       }
       &__name-box {
         margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
         &__last {
           margin-top: 10px;
           height: 40px;
@@ -79,4 +81,8 @@
   margin-left: 10px;
   border-radius: 5px;
   font-size: smaller;
+}
+
+.field_with_errors {
+  display: contents;
 }
