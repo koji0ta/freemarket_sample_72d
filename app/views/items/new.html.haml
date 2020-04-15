@@ -11,7 +11,21 @@
           %span.require 必須
           %p.upload-image  最大10枚までアップロードできます
           .item-new-box__image__field#image_field
-            
+            #image-box
+              #previews
+                - if @item.persisted?
+                  - @item.images.each_with_index do |image, i|
+                    = image_tag image.src.url, data: { index: i }, width: "100", height: '100', class: "preview-image"
+              = f.fields_for :images do |image|
+                .js-file_group{data:{ index: image.index }}
+                  = image.file_field :src, class: 'js-file'
+                  %span.js-remove 削除
+                - if  @item.persisted?
+                  =image.check_box :_destroy, data:{index: "image.index"},class: "hidden-destroy"
+              - if  @item.persisted?
+                .js-file_group{data:{ index: @images.count }}
+                  = file_field_tag :src,name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+                  %span.js-remove 削除
       .item-new-box
         .item-new-box__name
           = f.label "商品名", class: "items-text"
@@ -34,12 +48,31 @@
           = f.label "商品の詳細", class: "items-text"
           %span.require 必須
           %ul
-            ize.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}            
+            %li.status-menu カテゴリー
+            %span.require 必須
+            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
+            %li.status-menu 状態
+            %span.require 必須
+            = f.collection_select :status, Status.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
+            %li.status-menu サイズ
+            %span.require_size 任意
+            = f.collection_select :size, Size.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}    
+
       .item-new-box
         .item-new-box__send
           = f.label "配送について", class: "items-text"
           %span.require 必須
           %ul
+            %li.send-menu 配送料の負担
+            %span.require 必須
+            = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
+            %li.send-menu 発送元の地域
+            %span.require 必須
+            .item-new-box__send__prefecture
+              = @place.prefecture
+            %li.send-menu 発送までの日数
+            %span.require 必須
+            = f.collection_select :days, Days.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
 
       .item-new-box
         .item-new-box__price

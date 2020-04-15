@@ -12,7 +12,15 @@ class ItemsController < ApplicationController
   end
   
   def create
-   
+    @item = Item.new(item_params)
+    @item.whether_sale = true
+    @place = Place.find_by(user_id: current_user.id)
+    if @item.save
+      redirect_to root_path
+    else
+      @item.images.new
+      render :new
+    end
   end
 
   def show
@@ -54,7 +62,9 @@ class ItemsController < ApplicationController
 
   private
       
-
+  def item_params
+    params.require(:item).permit(:name, :description, :status, :size, :cost, :days, :price, :category_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
+  end
 
   def set_item
     @item = Item.find(params[:id])
