@@ -25,9 +25,7 @@ width: 39%;
       float: left;
       min-width: 300px;
       max-width: 300px;
-      min-height: 375px;
       margin: 0 auto;
-      background: #fafafa;
       }
       
     &__right-table{
@@ -118,17 +116,4 @@ a{
 }
 }
 
-.fa-angle-left {
-  font-size: 50px;
-  position: absolute;
-  z-index: 1;
-  top: 125px;
-}
 
-.fa-angle-right {
-  font-size: 50px;
-  position: absolute;
-  z-index: 1;
-  top: 125px;
-  left: 280px;
-}
