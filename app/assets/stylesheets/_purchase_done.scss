@@ -43,7 +43,20 @@
         }
       }
       .buy-content__user-info__submit{
-        margin: 60px 0 0 0;
+        margin: 30px 0 0 0;
+        &__button{
+          color: #FFF;/*文字・アイコン色*/
+          border-radius: 7px;/*角丸に*/
+          display: inline-block;
+          height: 50px;/*高さ*/
+          width: 250px;/*幅*/
+          text-align: center;/*中身を中央寄せ*/
+          font-size: 25px;/*文字のサイズ*/
+          line-height: 50px;/*高さと合わせる*/
+          background: #1da1f3;
+          overflow: hidden;/*はみ出た部分を隠す*/
+          text-decoration:none;/*下線は消す*/
+        }
       }
     }
   }
