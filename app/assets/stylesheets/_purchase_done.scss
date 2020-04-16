@@ -1,3 +1,50 @@
-// Place all the styles related to the purchase controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.purchase-done{
+  height: 60vh;
+  width: 80%;
+  margin: 0 auto;
+  font-weight: bold;
+  .purchase-done-info{
+    &__nav{
+      margin: 30px;
+      font-size: 25px;
+      text-align: center;
+    }
+    &__item{
+      border-top: dotted;
+      border-bottom: dotted;
+      border-color: darkturquoise;
+      padding: 40px 0;
+      display: flex;
+      justify-content: center;
+      .buy-item-image{
+        .buydetails-contet__image{
+          height: 90px;
+          width: 90px;
+        }
+      }
+      .buy-item-name{
+        margin-left: 20px;
+        font-size: 20px;
+        &__name{
+          line-height: 45px;
+        }
+        &__price{
+        }
+      }
+    }
+    &__price{
+      text-align: center;
+      .buy-price-table{
+        &__left{
+          margin: 30px 0 0 0;
+        }
+        &__right{
+          margin: 10px 0px;
+        }
+      }
+      .buy-content__user-info__submit{
+        margin: 60px 0 0 0;
+      }
+    }
+  }
+}
