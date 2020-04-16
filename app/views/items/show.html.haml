@@ -7,6 +7,10 @@
     = "#{@item.name}は#{current_user.nickname}さんから出品されました。#{@category.name}の商品で、#{@days.name}されます。"
   .item-box__main-content
     .item-box__main-content__left-photo
+      %ul.slider
+        - @item.images.each_with_index do |image, i|
+          %li
+            = image_tag image.src.url, data: { index: i }, width: "300", height: '300', class: "preview-image"
     .item-box__main-content__right-table
       %ul 
         %li 出品者

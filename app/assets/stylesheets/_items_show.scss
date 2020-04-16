@@ -117,3 +117,18 @@ a{
   color: blue;
 }
 }
+
+.fa-angle-left {
+  font-size: 50px;
+  position: absolute;
+  z-index: 1;
+  top: 125px;
+}
+
+.fa-angle-right {
+  font-size: 50px;
+  position: absolute;
+  z-index: 1;
+  top: 125px;
+  left: 280px;
+}
