@@ -1,21 +1,28 @@
--# %h1 Card#show
--# %p Find me in app/views/card/show.html.haml
-
 = render partial: "devise/header_view"
-= render partial: "users/side-box"
+.cards
+  = render partial: "users/side-box"
+  .card-show
+    %h2.card-show__top
+      登録クレジットカード情報
+    .card-show__container
+      .card-show__container__margin
+        %ul
+          %li クレジットカード番号
+          %h4
+            = "**** **** **** " + @default_card_information.last4
+        %ul
+          %li 使用期限
+          %h4
+            - exp_month = @default_card_information.exp_month.to_s
+            - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+            = exp_month + " / " + exp_year
 
-%label 登録クレジットカード情報
-%br
-= "**** **** **** " + @default_card_information.last4
-%br
-- exp_month = @default_card_information.exp_month.to_s
-- exp_year = @default_card_information.exp_year.to_s.slice(2,3)
-= exp_month + " / " + exp_year
-= form_tag(delete_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
-  %input{ type: "hidden", name: "card_id", value: "" }
-  %button 削除する
+        .card-show__container__margin__deleat
+          = form_tag(delete_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+            %input{ type: "hidden", name: "card_id", value: "" }
+            %button 削除する
 
-  = render partial: "devise/footer_view"
+= render partial: "devise/footer_view"
 
 
-  -# card_delete_path→card_pathに変更
+-# card_delete_path→card_pathに変更
