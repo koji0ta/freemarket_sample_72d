@@ -1,6 +1,8 @@
 = render partial: "devise/header_view"
 
 .items-new
+  .items-new-error-message
+    = render partial: "new_error_message"
   .item-new
     = form_for (@item) do |f| 
       .item-new-box
@@ -9,75 +11,78 @@
           %span.require 必須
           %p.upload-image  最大10枚までアップロードできます
           .item-new-box__image__field#image_field
-            -# .item-new-box__image__field__nav
-            -#   =icon('fa','camera')
-            -#   %p.image_nav  ドラックアンドドロップ
-            -#   %p.image_nav  もしくはファイルからアップロードできます
-            #image-box  
+            #image-box
               #previews
-                -if @item.persisted?
-                  -@item.images.each_with_index do |image,i|
-                    = image_tag image.src.url, data: { index: i }, width: "100", height: '100',class:"preview_image"
-              = f.fields_for :images do |i|
-                %div{data: {index: "image.index"},class: "js-file_group"}
-                  = i.file_field :image, class:"js_file"
+                - if @item.persisted?
+                  - @item.images.each_with_index do |image, i|
+                    = image_tag image.src.url, data: { index: i }, width: "100", height: '100', class: "preview-image"
+              = f.fields_for :images do |image|
+                .js-file_group{data:{ index: image.index }}
+                  = image.file_field :src, class: 'js-file'
                   %span.js-remove 削除
-                -if  @item.persisted?
+                - if  @item.persisted?
                   =image.check_box :_destroy, data:{index: "image.index"},class: "hidden-destroy"
-              -if  @item.persisted?
-                %div{data:{index: @item.image.count},class: "js-file_group"}
-                  = file_field_tag :image,name: "item[images_attributes][#{@item.images.count}][image]", class: 'js_file'
+              - if  @item.persisted?
+                .js-file_group{data:{ index: @images.count }}
+                  = file_field_tag :src,name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
                   %span.js-remove 削除
       .item-new-box
         .item-new-box__name
-          = f.label  "商品名" ,class: "items-text"
+          = f.label "商品名", class: "items-text"
           %span.require 必須
           %br/
-          = f.text_field :name,class:"item-input-field", placeholder:"40文字まで"
+          = f.text_field :name, class: "item-input-field", placeholder: "40文字まで"
           %br/ 
-          = f.label  "商品の説明" ,class: "items-text"
+          = f.label  "商品の説明", class: "items-text"
           %span.require 必須
           %br/
-          = f.text_area :description,class:"item-text-field" , placeholder:"商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
+          = f.text_area :description, class: "item-text-field", placeholder: "商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
           %br/
           %p.style-counter
             %span 0
             %span /
             %span 1000
+
       .item-new-box
         .item-new-box__status
           = f.label "商品の詳細", class: "items-text"
           %span.require 必須
           %ul
-            %li.status-menu カテゴリ
-            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
+            %li.status-menu カテゴリー
+            %span.require 必須
+            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
             %li.status-menu 状態
-            = f.collection_select :status, Status.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
+            %span.require 必須
+            = f.collection_select :status, Status.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
             %li.status-menu サイズ
-            = f.collection_select :size, Size.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}            
+            %span.require_size 任意
+            = f.collection_select :size, Size.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}    
+
       .item-new-box
         .item-new-box__send
           = f.label "配送について", class: "items-text"
           %span.require 必須
           %ul
             %li.send-menu 配送料の負担
-            = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
+            %span.require 必須
+            = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
             %li.send-menu 発送元の地域
-            = @place.prefecture
+            %span.require 必須
+            .item-new-box__send__prefecture
+              = @place.prefecture
             %li.send-menu 発送までの日数
-            = f.collection_select :days, Days.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
+            %span.require 必須
+            = f.collection_select :days, Days.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
+
       .item-new-box
         .item-new-box__price
           = f.label "販売価格", class: "items-text"
           %span.require 必須
           %span.en ￥
-          = f.number_field :price,class:"item-input-number"
-        .item-new-box__tax
-          販売手数料(10%)
-          %span.price-tax  -
+          = f.number_field :price, min: 0, class: "item-input-number"
+        
       .item-new-box
         .item-new-box__submit
           = f.submit  "出品する",  class:"new-item-sell"
-          -# = f.submit  "下書きに保存する",  class:"new-item-save"
 
 = render partial: "devise/footer_view"

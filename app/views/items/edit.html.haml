@@ -1,0 +1,90 @@
+= render partial: "devise/header_view"
+
+#item-edit-page.item-edit-page
+  .item-edit-page__inner
+    %h2.item-edit-page__inner__title
+      出品情報編集
+    .item-edit-form
+
+      = form_with model: @item do |f|
+        .item-edit-form__form-box
+          .item-edit-form__form-box__image
+            = f.label "出品画像", class: "field-label"
+            %span.form-require 必須
+            %br/
+            .form-explain 最大10枚までアップロードできます
+            #image-box
+              #previews
+                - if @item.persisted?
+                  - @images.each_with_index do |image, i|
+                    = image_tag image.src.url, data: { index: i }, width: "100", height: '100', class: "preview-image"
+                    
+              = f.fields_for :images do |image|
+                .js-file_group{data:{ index: image.index }}
+                  = image.file_field :src, class: 'js-file'
+                  %br/
+                  %span.js-remove 削除
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+              - if @item.persisted?
+                .js-file_group{data:{ index: @images.count }}
+                  = file_field_tag :src, name: "item[images_attributes][#{@images.count}][src]", class: 'js-file'
+                  .js-remove 削除
+
+        .item-edit-form__form-box
+          .field
+            = f.label "商品名", class: "field-label"
+            %span.form-require 必須
+            %br/
+            = f.text_field :name, class: "item-input-field", placeholder: "40文字まで"
+            %br/
+
+          .field
+            = f.label "商品の説明", class: "field-label"
+            %span.form-require 必須
+            %br/
+            = f.text_area :description, class:"item-text-field", placeholder: "商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
+            %br/
+            %p.style-counter
+              %span 0
+              %span /
+              %span 1000
+
+        .item-edit-form__form-box
+          = f.label "商品の詳細", class: "field-label"
+          %span.form-require 必須
+          %ul
+            %li.status-menu カテゴリ
+            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
+            %li.status-menu 状態
+            = f.collection_select :status, Status.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
+            %li.status-menu サイズ
+            = f.collection_select :size, Size.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
+
+        .item-edit-form__form-box
+          = f.label "配送について", class: "field-label"
+          %span.form-require 必須
+          %ul
+            %li.send-menu 配送料の負担
+            = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
+            %li.send-menu 発送元の地域
+            = @place.prefecture
+            %li.send-menu 発送までの日数
+            = f.collection_select :days, Days.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
+
+        .item-edit-form__form-box
+          = f.label "販売価格", class: "field-label"
+          %span.form-require 必須
+          %span.yen ¥
+          = f.number_field :price, class: "item-input-number"
+          .market-place-fee
+          販売手数料(10%)
+          %span.tax -
+
+        .item-edit-form__form-box
+          = f.submit "送信", class: "submit-btn"
+
+        .item-edit-form__form-box
+          = link_to "削除", @item, { method: :delete, data: { confirm: '本当に商品を削除してよろしいですか？' }, class: "delete-btn" }
+
+= render partial: "devise/footer_view"

@@ -1,18 +1,21 @@
 = render partial: "top-header"
+
 .item-box
   .item-box__name
     = @item.name
   .item-box__wording
-    = "#{@item.name}は#{@user.nickname}さんから出品されました。#{@category.name}の商品で、#{@days.name}されます。"
+    = "#{@item.name}は#{current_user.nickname}さんから出品されました。#{@category.name}の商品で、#{@days.name}されます。"
   .item-box__main-content
     .item-box__main-content__left-photo
-      -# - @images.each do |img|
-      -#   = image_tag(img)
+      %ul.slider
+        - @item.images.each_with_index do |image, i|
+          %li
+            = image_tag image.src.url, data: { index: i }, width: "300", height: '300', class: "preview-image"
     .item-box__main-content__right-table
       %ul 
         %li 出品者
         %h1
-          = @user.nickname
+          = current_user.nickname
       %ul 
         %li カテゴリー
         %h1
@@ -45,7 +48,6 @@
   - if user_signed_in? && current_user.id == @item.user_id
     = link_to "編集", ("#"), method: :get 
     = link_to '削除', item_path, method: :delete
-
 
 = render partial: "top-appbanner"
 = render partial: "top-footer"
