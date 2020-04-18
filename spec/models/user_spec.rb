@@ -77,6 +77,10 @@ describe User do
       expect(user.errors[:birth]).to include("を入力してください")
     end
 
+    it "上記情報が存在すれば登録できること" do
+      user = build(:user)
+      expect(user).to be_valid
+    end
 
     
   end

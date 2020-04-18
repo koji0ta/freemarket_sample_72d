@@ -76,7 +76,11 @@ describe Item do
     it  "サイズは空でも出品できること"  do
       item = build(:item, size:"")
       item.invalid?
+      expect(item).to be_valid
     end
+
+    # describe  '#update'  do
+    
 
   end
 end
