@@ -2,7 +2,6 @@ FactoryBot.define do
 
   factory :item do
     association :user
-    association has_many { :images }
 
     name              {"スカート"}
     price             {"100"}
@@ -13,7 +12,11 @@ FactoryBot.define do
     size              {"2"}
     category_id       {"3"}
 
-    
+    trait :with_image do
+      after(:build) do |item|
+        item.images << FactoryBot.build(:image)
+      end
+    end
+
   end
-  
 end
