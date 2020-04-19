@@ -1,0 +1,63 @@
+.purchase-done{
+  height: 60vh;
+  width: 80%;
+  margin: 0 auto;
+  font-weight: bold;
+  .purchase-done-info{
+    &__nav{
+      margin: 30px;
+      font-size: 25px;
+      text-align: center;
+    }
+    &__item{
+      border-top: dotted;
+      border-bottom: dotted;
+      border-color: darkturquoise;
+      padding: 40px 0;
+      display: flex;
+      justify-content: center;
+      .buy-item-image{
+        .buydetails-contet__image{
+          height: 90px;
+          width: 90px;
+        }
+      }
+      .buy-item-name{
+        margin-left: 20px;
+        font-size: 20px;
+        &__name{
+          line-height: 45px;
+        }
+        &__price{
+        }
+      }
+    }
+    &__price{
+      text-align: center;
+      .buy-price-table{
+        &__left{
+          margin: 30px 0 0 0;
+        }
+        &__right{
+          margin: 10px 0px;
+        }
+      }
+      .buy-content__user-info__submit{
+        margin: 30px 0 0 0;
+        &__button{
+          color: #FFF;/*文字・アイコン色*/
+          border-radius: 7px;/*角丸に*/
+          display: inline-block;
+          height: 50px;/*高さ*/
+          width: 250px;/*幅*/
+          text-align: center;/*中身を中央寄せ*/
+          font-size: 25px;/*文字のサイズ*/
+          line-height: 50px;/*高さと合わせる*/
+          background: #1da1f3;
+          overflow: hidden;/*はみ出た部分を隠す*/
+          text-decoration:none;/*下線は消す*/
+        }
+      }
+    }
+  }
+}

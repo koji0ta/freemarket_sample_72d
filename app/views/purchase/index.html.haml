@@ -8,12 +8,15 @@
       .purchase-main__container__buy-item__inner
         .purchase-main__container__buy-item__inner__box
           .purchase-main__container__buy-item__inner__box__image
-            = image_tag("item/item02.png")
+            %ul
+              - @item.images.each_with_index do |image|
+                %li
+                  = image_tag image.src.url
           .purchase-main__container__buy-item__inner__box__detail
             %p.purchase-main__container__buy-item__inner__box__detail__name
-              テスト商品
+              = @item.name
             %p.purchase-main__container__buy-item__inner__box__detail__price
-              %span 333円
+              = "#{@item.price.to_s}円"
               %span.tax-included (税込)
 
     .purchase-main__container__bottom
@@ -23,20 +26,36 @@
           .purchase-main__container__bottom__inner__pay__amount
             支払い金額
           .purchase-main__container__bottom__inner__pay__price
-            333円
+            = "#{@item.price}円"
         .purchase-main__container__bottom__inner__select
           .purchase-main__container__bottom__inner__select__method
             .purchase-main__container__bottom__inner__select__method__box
-              %h3.purchase-main__container__bottom__inner__select__method__box__top
-                支払い方法
-              = link_to "登録してください", root_path, class:"link-to-register"
+              .purchase-main__container__bottom__inner__select__method__box__top
+                %ul
+                  支払い方法
+                  - if @default_card_information.blank?
+                    %br /
+                  - else
+                -#以下カード情報を表示
+                %ul
+                  %li クレジットカード番号
+                  %h1
+                    = "**** **** **** " + @default_card_information.last4
+                %ul
+                  %li 使用期限
+                  %h1
+                    - exp_month = @default_card_information.exp_month.to_s
+                    - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+                    = exp_month + " / " + exp_year
 
           .purchase-main__container__bottom__inner__select__delivery
             .purchase-main__container__bottom__inner__select__delivery__address
-              %h3.purchase-main__container__bottom__inner__select__delivery__address__top
-                配送先
-              = link_to "登録してください", root_path, class:"link-to-register"
+              -# %h3.purchase-main__container__bottom__inner__select__delivery__address__top
+              -#   配送先
+              -# = link_to "登録してください", root_path, class:"link-to-register"
           .purchase-main__container__bottom__inner__select__btn
-            = link_to "購入する", root_path, class: "btn link-to-purchase"
+            -# = link_to "購入する", root_path, class: "btn link-to-purchase"
+            = form_tag(pay_purchase_index_path(item_id: @item.id), action: :pay, method: :post ) do
+              %button{class: :buy}購入する
 
 = render "devise/footer_view"

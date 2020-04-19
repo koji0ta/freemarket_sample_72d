@@ -1,0 +1,24 @@
+= render 'devise/header_view'
+.purchase-done
+  .purchase-done-info  
+    .purchase-done-info__nav
+      ご注文ありがとうございます！
+      %br/
+      購入が完了しました。
+    .purchase-done-info__item
+      .buy-item-image
+      .buy-item-detail
+        .buy-item-name
+          .buy-item-name__name
+          .buy-item-name__price
+            %span 
+    .purchase-done-info__price
+      %form.buy-form
+        .buy-price-table
+          .buy-price-table__left
+          .buy-price-table__right
+        .buy-content__user-info__submit
+          = link_to "トップページへ戻る", root_path, class: 'buy-content__user-info__submit__button'
+
+= render 'devise/footer_view'
+

@@ -81,4 +81,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'active_hash'
 gem 'kaminari'
+gem 'payjp'
+gem 'dotenv-rails'
 gem 'fog-aws'
+
