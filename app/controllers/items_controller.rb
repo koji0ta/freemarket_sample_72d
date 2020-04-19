@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_parent_category, only: [:new, :create]
 
   def index
     @items = Item.includes(:user).order("created_at DESC").page(params[:page]).per(5)
@@ -9,7 +10,6 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @place = Place.find_by(user_id: current_user.id)
-    @categories = Category.where(ancestry: nil)
   end
   
   def create
@@ -38,6 +38,25 @@ class ItemsController < ApplicationController
     @place = Place.find_by(user_id: current_user.id)
     if user_signed_in? && current_user.id == @item.user_id
       @images = @item.images
+
+      grandchild_category = @item.category
+      child_category = grandchild_category.parent
+
+      @category_parent_array = []
+      Category.where(ancestry: nil).each do |parent|
+        @category_parent_array << parent
+      end
+
+      @category_children_array = []
+      Category.where(ancestry: child_category.ancestry).each do |children|
+        @category_children_array << children
+      end
+
+      @category_grandchildren_array = []
+      Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+        @category_grandchildren_array << grandchildren
+      end
+
     else
       redirect_to root_path
     end
@@ -76,6 +95,10 @@ class ItemsController < ApplicationController
   
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_parent_category
+    @categories = Category.where(ancestry: nil)
   end
   
 end

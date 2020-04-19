@@ -8,28 +8,29 @@ $(document).on('turbolinks:load', function(){
   
   function appendChidrenBox(insertHTML){
     let childSelectHtml = '';
-    childSelectHtml = `<div class='status__details__categories__added' id='children-form-box'>
-                        <select class='item-select-field' id="child_category" name="item[category_id]">
+    childSelectHtml = `<div class='item-edit-form__form-box__categories__added' id='children-edit-box'>
+                        <select class='item-select-field' id="edit_child_category" name="item[category_id]">
                           <option value="---" data-category="---">---</option>
                           ${insertHTML}
                         <select>
                       </div>`;
-    $('.item-new-box__status__details__categories').append(childSelectHtml);
+    $('.item-edit-form__form-box__categories').append(childSelectHtml);
   }
 
   function appendGrandchidrenBox(insertHTML){
     var grandchildSelectHtml = '';
-    grandchildSelectHtml = `<div class='status__details__categories__added' id='grandchildren-form-box'>
-                              <select class='item-select-field' id="grandchild_category" name="item[category_id]">
+    grandchildSelectHtml = `<div class='item-edit-form__form-box__categories__added' id='grandchildren-edit-box'>
+                              <select class='item-select-field' id="edit_grandchild_category" name="item[category_id]">
                                 <option value="---" data-category="---">---</option>
                                 ${insertHTML}
                               <select>
                             </div>`;
-    $('.item-new-box__status__details__categories').append(grandchildSelectHtml);
+    $('.item-edit-form__form-box__categories').append(grandchildSelectHtml);
   }
 
-  $('#parent_category').on('change', function(){
-    let parentCategory = document.getElementById('parent_category').value; //選択された親カテゴリーのidを取得
+  $('.item-edit-form__form-box__categories').on('change', '#edit_parent_category', function(){
+    let parentCategory = document.getElementById('edit_parent_category').value; //選択された親カテゴリーのidを取得
+    console.log(parentCategory);
     if (parentCategory != null){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/items/get_category_children',
@@ -39,8 +40,8 @@ $(document).on('turbolinks:load', function(){
       })
 
       .done(function(children){
-        $('#children-form-box').remove(); //親が変更された時、子以下を削除する
-        $('#grandchildren-form-box').remove();
+        $('#children-edit-box').remove(); //親が変更された時、子以下を削除する
+        $('#grandchildren-edit-box').remove();
         let insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -51,13 +52,14 @@ $(document).on('turbolinks:load', function(){
         alert('カテゴリー取得に失敗しました');
       })
     }else{
-      $('#children-form-box').remove(); //親カテゴリーが初期値になった時、子以下を削除する
-      $('#grandchildren-form-box').remove();
+      $('#children-edit-box').remove(); //親カテゴリーが初期値になった時、子以下を削除する
+      $('#grandchildren-edit-box').remove();
     }
   });
 
-  $('.item-new-box__status__details__categories').on('change', '#child_category', function(){
-    let childId = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
+  $('.item-edit-form__form-box__categories').on('change', '#edit_child_category', function(){
+    let childId = document.getElementById('edit_child_category').value; //選択された子カテゴリーのidを取得
+    console.log(childId);
     if (childId != "---"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/items/get_category_grandchildren',
@@ -67,7 +69,7 @@ $(document).on('turbolinks:load', function(){
       })
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
-          $('#grandchildren-form-box').remove(); //子が変更された時、孫以下を削除する
+          $('#grandchildren-edit-box').remove(); //子が変更された時、孫以下を削除する
           let insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -79,7 +81,7 @@ $(document).on('turbolinks:load', function(){
         alert('カテゴリー取得に失敗しました');
       })
     }else{
-      $('#grandchildren-form-box').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
+      $('#grandchildren-edit-box').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
     }
   });
 });
