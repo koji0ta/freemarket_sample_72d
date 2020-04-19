@@ -3,7 +3,7 @@ class PurchaseController < ApplicationController
   require 'payjp'
 
   before_action :set_card, except: :done
-  before_action :set_item
+  before_action :set_item, except: :done
 
   def index
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
