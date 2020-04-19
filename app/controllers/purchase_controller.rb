@@ -30,7 +30,7 @@ class PurchaseController < ApplicationController
   end
 
   def done
-
+    @item.update(whether_sale: 0)
   end
   
   private

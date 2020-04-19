@@ -17,9 +17,9 @@
       display: flex;
       justify-content: center;
       .buy-item-image{
-        .buydetails-contet__image{
-          height: 90px;
+        &__first{
           width: 90px;
+          height: 90px;
         }
       }
       .buy-item-name{

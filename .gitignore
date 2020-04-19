@@ -27,4 +27,6 @@
 /config/master.key
 public/uploads/*
 
+# ----------------------
 /.env
+# これで環境変数をgithubにアップすることなく使用することができます。
