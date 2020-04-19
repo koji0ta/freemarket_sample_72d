@@ -2,7 +2,7 @@ class PurchaseController < ApplicationController
 
   require 'payjp'
 
-  # before_action :set_card, :set_item
+  before_action :set_item, only: [:index,:done]
 
   def index
     card = Card.where(user_id: current_user.id).first
@@ -31,6 +31,7 @@ class PurchaseController < ApplicationController
   end
 
   def done
+    @item.update(whether_sale: 0)
   end
   
   private

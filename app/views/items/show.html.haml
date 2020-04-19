@@ -40,7 +40,7 @@
   .item-box__item-buybtn
   - if user_signed_in? && current_user.id == @item.user_id
   - else
-    = link_to '購入画面に進む', ("#"), class: :buybtn
+    = link_to '購入画面に進む', purchase_index_path(item_id: @item.id), class: :buybtn
   .item-box__details
     %p
       = @item.description

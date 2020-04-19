@@ -11,12 +11,14 @@
       .purchase-main__container__buy-item__inner
         .purchase-main__container__buy-item__inner__box
           .purchase-main__container__buy-item__inner__box__image
-            = image_tag("item/item02.png")
+            = image_tag @item.images.first.src.url
           .purchase-main__container__buy-item__inner__box__detail
             %p.purchase-main__container__buy-item__inner__box__detail__name
-              テスト商品
+              =@item.name 
             %p.purchase-main__container__buy-item__inner__box__detail__price
-              %span 333円
+              %span 
+                =@item.price
+                円
               %span.tax-included (税込)
 
     .purchase-main__container__bottom
@@ -26,7 +28,8 @@
           .purchase-main__container__bottom__inner__pay__amount
             支払い金額
           .purchase-main__container__bottom__inner__pay__price
-            333円
+            =@item.price 
+            円
         .purchase-main__container__bottom__inner__select
           .purchase-main__container__bottom__inner__select__method
             .purchase-main__container__bottom__inner__select__method__box
@@ -51,7 +54,7 @@
           .purchase-main__container__bottom__inner__select__btn
             -# = link_to "購入する", root_path, class: "btn link-to-purchase"
             = form_tag(action: :pay, method: :post) do
-              %button 購入する
+              = link_to '購入する', purchase_done_path(item_id: @item.id), class: :buybtn
 
 = render "devise/footer_view"
 
