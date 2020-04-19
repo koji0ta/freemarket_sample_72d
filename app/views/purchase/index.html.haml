@@ -52,6 +52,6 @@
             .purchase-main__container__bottom__inner__select__delivery__address
           .purchase-main__container__bottom__inner__select__btn
             = form_tag(pay_purchase_index_path(item_id: @item.id), action: :pay, method: :post ) do
-              %button{class: :buy}購入する
+              = link_to '購入する', done_purchase_index_path(item_id: @item.id), class: :buy
 
 = render "devise/footer_view"
