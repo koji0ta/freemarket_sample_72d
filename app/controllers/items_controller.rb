@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @place = Place.find_by(user_id: current_user.id)
-    @parents = Category.where("ancestry IS NULL").order("id ASC")
+    @categories = Category.where(ancestry: nil)
   end
   
   def create
@@ -60,14 +60,24 @@ class ItemsController < ApplicationController
       render :edit, notice: '商品情報が削除できませんでした'
     end
   end
+  
+  #jbuilder用メソッド
+  def get_category_children
+    @category_children = Category.find("#{params[:parent_id]}").children
+  end
+  
+  def get_category_grandchildren
+    @category_grandchildren = Category.find("#{params[:child_id]}").children
+  end
 
   private
-      
+  
   def item_params
     params.require(:item).permit(:name, :description, :status, :size, :cost, :days, :price, :category_id, images_attributes: [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
-
+  
   def set_item
     @item = Item.find(params[:id])
   end
+  
 end
