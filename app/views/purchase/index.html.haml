@@ -50,11 +50,7 @@
 
           .purchase-main__container__bottom__inner__select__delivery
             .purchase-main__container__bottom__inner__select__delivery__address
-              -# %h3.purchase-main__container__bottom__inner__select__delivery__address__top
-              -#   配送先
-              -# = link_to "登録してください", root_path, class:"link-to-register"
           .purchase-main__container__bottom__inner__select__btn
-            -# = link_to "購入する", root_path, class: "btn link-to-purchase"
             = form_tag(pay_purchase_index_path(item_id: @item.id), action: :pay, method: :post ) do
               %button{class: :buy}購入する
 
