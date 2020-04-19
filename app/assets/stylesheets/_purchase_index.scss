@@ -91,6 +91,29 @@
               border-bottom: 1px solid #f5f5f5;
               &__top {
                 font-size: 14px;
+
+                ul{
+                  display: flex;
+                }
+          
+                  li{
+                    width: 39%;
+                    text-align: left;
+                    font-weight: 400;
+                    background: #fafafa;
+                    list-style: none;
+                    padding: 8px;
+                    border: 1px solid #f5f5f5;
+                  }
+          
+                  h1{
+                    width: 61%;
+                    background: #fff;
+                    list-style: none;
+                    display: flex;
+                    padding: 8px;
+                    border: 1px solid #f5f5f5;
+                  }
               }
             }
           }
@@ -111,5 +134,15 @@
         }
       }
     }
+  }
+  .buy{
+    width: 100%;
+    font-size: 24px;
+    line-height: 60px;
+    background-color: #ea352d;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
   }
 }
