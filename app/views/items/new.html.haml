@@ -45,19 +45,24 @@
 
       .item-new-box
         .item-new-box__status
-          = f.label "商品の詳細", class: "items-text"
-          %span.require 必須
-          %ul
-            %li.status-menu カテゴリー
-            %span.require 必須
-            = f.collection_select :category_id, @parents, :id, :name,{prompt: "---"}, {class:"item-select-field"}
-            %li.status-menu 状態
-            %span.require 必須
-            = f.collection_select :status, Status.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}
-            %li.status-menu サイズ
-            %span.require_size 任意
-            = f.collection_select :size, Size.all, :id, :name, {include_blank: false,selected: 1}, {class: "item-select-field"}    
-
+          .item-new-box__status__details
+            .item-new-box__status__details__title
+              商品の詳細
+              %span.require 必須
+            .item-new-box__status__details__wrapper
+              .item-new-box__status__details__categories
+                .item-new-box__status__details__categories__default
+                  = f.label 'カテゴリー', class: 'parent-category-label'
+                  %span.require 必須
+                  = f.collection_select :category_id, @categories, :id, :name, {prompt: "---"},{class: "item-select-field", id: "parent_category"}
+              .item-new-box__status__details__condition
+                = f.label '状態', class: 'condition-label'
+                %span.require 必須
+                = f.collection_select :status, Status.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
+              .item-new-box__status__details__size
+                = f.label 'サイズ', class: 'size-label'
+                %span.require 必須
+                = f.collection_select :size, Size.all, :id, :name, {include_blank: false,selected: 1}, {class:"item-select-field"}
       .item-new-box
         .item-new-box__send
           = f.label "配送について", class: "items-text"
