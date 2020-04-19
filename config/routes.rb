@@ -20,6 +20,6 @@ Rails.application.routes.draw do
       post 'pay', to: 'purchase#pay'
       get 'done', to: 'purchase#done'
     end
-
   end
+  
 end
