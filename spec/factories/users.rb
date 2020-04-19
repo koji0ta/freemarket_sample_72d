@@ -1,6 +1,7 @@
 FactoryBot.define do
 
   factory :user do
+
     nickname              {"abe"}
     email                 {"kkk@gmail.com"}
     password              {"00000000"}
@@ -11,6 +12,11 @@ FactoryBot.define do
     first_kana            {"タロウ"}
     birth                 {"19860909"}
     
+    trait :with_place do
+      after(:build) do |user|
+        place = FactoryBot.build(:place)
+      end
+    end
   end
 
 end
