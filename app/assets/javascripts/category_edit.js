@@ -30,7 +30,6 @@ $(document).on('turbolinks:load', function(){
 
   $('.item-edit-form__form-box__categories').on('change', '#edit_parent_category', function(){
     let parentCategory = document.getElementById('edit_parent_category').value; //選択された親カテゴリーのidを取得
-    console.log(parentCategory);
     if (parentCategory != null){ //親カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/items/get_category_children',
@@ -59,7 +58,6 @@ $(document).on('turbolinks:load', function(){
 
   $('.item-edit-form__form-box__categories').on('change', '#edit_child_category', function(){
     let childId = document.getElementById('edit_child_category').value; //選択された子カテゴリーのidを取得
-    console.log(childId);
     if (childId != "---"){ //子カテゴリーが初期値でないことを確認
       $.ajax({
         url: '/items/get_category_grandchildren',
