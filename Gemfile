@@ -84,4 +84,4 @@ gem 'kaminari'
 gem 'payjp'
 gem 'dotenv-rails'
 gem 'fog-aws'
-
+gem 'ancestry'

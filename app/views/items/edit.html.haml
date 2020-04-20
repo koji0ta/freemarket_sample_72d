@@ -51,15 +51,28 @@
               %span 1000
 
         .item-edit-form__form-box
-          = f.label "商品の詳細", class: "field-label"
-          %span.form-require 必須
-          %ul
-            %li.status-menu カテゴリ
-            = f.collection_select :category_id, Category.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
-            %li.status-menu 状態
-            = f.collection_select :status, Status.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
-            %li.status-menu サイズ
-            = f.collection_select :size, Size.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
+          .item-edit-form__form-box__title
+            商品の詳細
+            %span.require 必須
+          .item-edit-form__form-box__wrapper
+            .item-edit-form__form-box__categories
+              .item-edit-form__form-box__categories__default
+                = f.label 'カテゴリー', class: 'parent-category-label'
+                %span.require 必須
+                = f.collection_select :category_id, @category_parent_array, :id, :name, {selected: @item.category.parent.parent.id},{class: "item-select-field", id: "edit_parent_category"}
+              .item-edit-form__form-box__categories__added#children-edit-box
+                = f.collection_select :category_id, @category_children_array, :id, :name, {selected: @item.category.parent.id},{class: "item-select-field", id: "edit_child_category"}
+              .item-edit-form__form-box__categories__added#grandchildren-edit-box
+                = f.collection_select :category_id, @category_grandchildren_array, :id, :name, {selected: @item.category.id},{class: "item-select-field", id: "edit_grandchild_category"}
+
+            .item-edit-form__form-box__condition
+              = f.label '状態', class: 'condition-label'
+              %span.require 必須
+              = f.collection_select :status, Status.all, :id, :name, {include_blank: false}, {class:"item-select-field"}
+            .item-edit-form__form-box__size
+              = f.label 'サイズ', class: 'size-label'
+              %span.require 必須
+              = f.collection_select :size, Size.all, :id, :name, {include_blank: false}, {class:"item-select-field"}
 
         .item-edit-form__form-box
           = f.label "配送について", class: "field-label"
