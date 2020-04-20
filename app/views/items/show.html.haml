@@ -4,7 +4,7 @@
   .item-box__name
     = @item.name
   .item-box__wording
-    = "#{@item.name}は#{@user.nickname}さんから出品されました。#{@category.name}の商品で、#{@days.name}されます。"
+    = "#{@item.name}は#{@user.nickname}さんから出品されました。#{@first_category.name}の商品で、#{@days.name}されます。"
   .item-box__main-content
     .item-box__main-content__left-photo
       %ul.slider
@@ -19,7 +19,11 @@
       %ul 
         %li カテゴリー
         %h1
-          = @category.name
+          = @first_category.name
+          %br/
+          = @second_category.name
+          %br/
+          = @third_category.name
       %ul 
         %li サイズ
         %h1

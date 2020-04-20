@@ -26,7 +26,9 @@ class ItemsController < ApplicationController
 
   def show
     @user = @item.user
-    @category = Category.find(@item.category_id)
+    @third_category = Category.find(@item.category_id)
+    @second_category = @third_category.parent
+    @first_category = @second_category.parent
     @images = @item.images
     @status = Status.find(@item.status)
     @size = Size.find(@item.size)
