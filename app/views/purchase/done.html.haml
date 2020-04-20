@@ -7,22 +7,22 @@
       購入が完了しました。
     .purchase-done-info__item
       .buy-item-image
-        = image_tag @item.images.first.src.url ,class: "buy-item-image__first"
+        -# = image_tag @item.images.first.src.url ,class: "buy-item-image__first"
       .buy-item-detail
         .buy-item-name
           .buy-item-name__name
-            = @item.name
+            -# = @item.name
           .buy-item-name__price
             %span 
-              =@item.price
-              円
+              -# =@item.price
+              -# 円
     .purchase-done-info__price
       %form.buy-form
         .buy-price-table
           .buy-price-table__left
           .buy-price-table__right
-            =@item.price 
-            円
+            -# =@item.price 
+            -# 円
         .buy-content__user-info__submit
           = link_to "トップページへ戻る", root_path, class: 'buy-content__user-info__submit__button'
 

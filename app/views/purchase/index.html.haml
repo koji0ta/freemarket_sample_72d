@@ -8,10 +8,7 @@
       .purchase-main__container__buy-item__inner
         .purchase-main__container__buy-item__inner__box
           .purchase-main__container__buy-item__inner__box__image
-            %ul
-              - @item.images.each_with_index do |image|
-                %li
-                  = image_tag image.src.url
+              = image_tag @item.imges.first.src.url
           .purchase-main__container__buy-item__inner__box__detail
             %p.purchase-main__container__buy-item__inner__box__detail__name
               = @item.name
@@ -52,6 +49,6 @@
             .purchase-main__container__bottom__inner__select__delivery__address
           .purchase-main__container__bottom__inner__select__btn
             = form_tag(pay_purchase_index_path(item_id: @item.id), action: :pay, method: :post ) do
-              = link_to '購入する', done_purchase_index_path(item_id: @item.id), class: :buy
+              %button "購入する"
 
 = render "devise/footer_view"

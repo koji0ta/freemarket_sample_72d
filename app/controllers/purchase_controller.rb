@@ -3,7 +3,7 @@ class PurchaseController < ApplicationController
   require 'payjp'
 
   before_action :set_card, except: :done
-  before_action :set_item
+  before_action :set_item, except: :done
 
   def index
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
@@ -26,11 +26,12 @@ class PurchaseController < ApplicationController
     customer: @card.customer_id, #顧客ID
     currency: 'jpy', #日本円
   )
+  @item.update(whether_sale: 0)
   redirect_to action: 'done' #完了画面に移動
   end
 
   def done
-    @item.update(whether_sale: 0)
+
   end
   
   private
