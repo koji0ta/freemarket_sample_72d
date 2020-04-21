@@ -3,6 +3,33 @@
   margin: 0 auto;
   width: 700px;
 
+  .sns-btns {
+    margin-top: 20px;
+
+    .sns-btn {
+      display: block;
+      margin: 10px auto;
+      text-align: center;
+      width: 200px;
+      height: 50px;
+      line-height: 50px;
+      color: #fff;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      }
+
+    .facebook-btn {
+      border: 1px solid #3B5998;
+      background-color: #3B5998;
+    }
+    
+    .google-btn {
+      border: 1px solid #ff5a5f;
+      background-color: #ff5a5f;
+    }
+  }
+
   &__header {
     height: 100px;
     text-align: center;

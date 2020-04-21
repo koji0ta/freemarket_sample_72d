@@ -1,6 +1,10 @@
 = render partial: "devise/header_view"
 
 .new-reg
+  .sns-btns
+    = link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post, class: 'sns-btn facebook-btn'
+    = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post, class: 'sns-btn google-btn'
+
   %h2.new-reg__header 会員情報入力
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
@@ -11,44 +15,51 @@
             = f.label :ニックネーム
             %span.require 必須
             %br/
-            = f.text_field :nickname, autofocus: true, placeholder: '例)ポチ',class: 'new-reg__contents__wrapper__box__form'
+            = f.text_field :nickname, autofocus: true, placeholder: '例)ポチ', class: 'new-reg__contents__wrapper__box__form'
+
         .new-reg__contents__wrapper__box
           .field
             = f.label :メールアドレス
             %span.require 必須
             %br/
-            = f.email_field :email, autocomplete: "email", placeholder: '例)sample@teamD',class: 'new-reg__contents__wrapper__box__form'
-        .new-reg__contents__wrapper__box
-          .field
-            = f.label :パスワード
-            %span.require 必須
-            - if @minimum_password_length
-              %em
-                (#{@minimum_password_length} 文字以上)
-            %br/
-            = f.password_field :password, autocomplete: "new-password", placeholder: '7文字以上の半角英数字',class: 'new-reg__contents__wrapper__box__form'
-        .new-reg__contents__wrapper__box
-          .field
-            = f.label :パスワード確認
-            %span.require 必須
-            %br/
-            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '確認',class: 'new-reg__contents__wrapper__box__form'
+            = f.email_field :email, autocomplete: "email", placeholder: '例)sample@teamD', class: 'new-reg__contents__wrapper__box__form'
+
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
+          .new-reg__contents__wrapper__box
+            .field
+              = f.label :パスワード
+              %span.require 必須
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} 文字以上)
+                %br/
+                = f.password_field :password, autocomplete: "new-password", placeholder: "#{@minimum_password_length}文字以上の半角英数字", class: 'new-reg__contents__wrapper__box__form'
+
+            .new-reg__contents__wrapper__box
+              .field
+                = f.label :パスワード確認
+                %span.require 必須
+                %br/
+                = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '確認', class: 'new-reg__contents__wrapper__box__form'
+
 
         .new-reg__contents__wrapper__name-box
           .field
             = f.label :お名前（全角）
             %span.require 必須
             %br/
-            = f.text_field :last_name, placeholder: '例)山田',class: 'new-reg__contents__wrapper__name-box__last'
-            = f.text_field :first_name, placeholder: '例)太郎',class: 'new-reg__contents__wrapper__name-box__first'
+            = f.text_field :last_name, placeholder: '例)山田', class: 'new-reg__contents__wrapper__name-box__last'
+            = f.text_field :first_name, placeholder: '例)太郎', class: 'new-reg__contents__wrapper__name-box__first'
 
         .new-reg__contents__wrapper__name-box
           .field
             = f.label :お名前カナ（全角）
             %span.require 必須
             %br/
-            = f.text_field :last_kana, placeholder: '例)ヤマダ',class: 'new-reg__contents__wrapper__name-box__last'
-            = f.text_field :first_kana, placeholder: '例)タロウ',class: 'new-reg__contents__wrapper__name-box__first'
+            = f.text_field :last_kana, placeholder: '例)ヤマダ', class: 'new-reg__contents__wrapper__name-box__last'
+            = f.text_field :first_kana, placeholder: '例)タロウ', class: 'new-reg__contents__wrapper__name-box__first'
 
         .new-reg__contents__wrapper__birth
           .field
@@ -57,30 +68,35 @@
             %br/
             != sprintf(f.date_select(:birth, prompt:"--",use_month_numbers:true, start_year:(Time.now.year - 10), end_year:1900, date_separator:'%s'),'年','月')+'日'
 
+
         = f.fields_for :place do |f|
           .new-reg__contents__wrapper__box
             .field
               = f.label :郵便番号 
               %span.require 必須
               = f.text_field :post_code, autofocus: true, autocomplete: "post_code", placeholder: "例）1234567", class: "new-reg__contents__wrapper__box__form"
+
           .new-reg__contents__wrapper__box
             .field
               = f.label :都道府県
               %span.require 必須
               %br/
               = f.text_field :prefecture, autofocus: true, autocomplete: "prefecture", placeholder: "例）神奈川県", class: "new-reg__contents__wrapper__box__form"
+
           .new-reg__contents__wrapper__box
             .field
               = f.label :市区町村
               %span.require 必須
               %br/
               = f.text_field :city_name, autofocus: true, autocomplete: "city_name", placeholder: "例）横浜市緑区", class: "new-reg__contents__wrapper__box__form"
+
           .new-reg__contents__wrapper__box
             .field
               = f.label :番地
               %span.require 必須
               %br/
               = f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "例）青山1-1-1", class: "new-reg__contents__wrapper__box__form"
+
           .new-reg__contents__wrapper__box
             .field
               = f.label :建物名
@@ -88,7 +104,7 @@
               %br/
               = f.text_field :building, autofocus: true, autocomplete: "building", placeholder: "例）柳ビル103", class: "new-reg__contents__wrapper__box__form"
 
-              .actions
-                = f.submit "新規登録", class: 'new-reg__contents__wrapper__btn'
-      
+        .actions
+          = f.submit "新規登録", class: 'new-reg__contents__wrapper__btn'
+
 = render partial: "devise/footer_view"
