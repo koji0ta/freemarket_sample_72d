@@ -298,5 +298,5 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   config.omniauth :facebook,Rails.application.credentials[:FACEBOOK][:CLIENT_ID],Rails.application.credentials[:FACEBOOK][:CLIENT_SECRET]
-  config.omniauth :google_oauth2,Rails.application.credentials[:GOOGLE][:CLIENT_ID],Rails.application.credentials[:GOOGLE][:CLIENT_SECRET]
+  config.omniauth :google_oauth2,Rails.application.credentials[:GOOGLE][:CLIENT_ID],Rails.application.credentials[:GOOGLE][:CLIENT_SECRET], skip_jwt: true
 end
