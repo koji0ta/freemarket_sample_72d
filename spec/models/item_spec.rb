@@ -1,9 +1,10 @@
 require 'rails_helper'
-describe Item do
+describe Item, type: :model do
   describe  '#create'  do
     it  "必須項目を入力すれば出品できること"  do
       expect(build(:item, :with_image)).to be_valid
     end
+    
 
     it  "商品名が空では出品できないこと"  do
       item = build(:item, :with_image, name:"")
@@ -59,12 +60,6 @@ describe Item do
       expect(item.errors[:days]).to include
     end
 
-    it  "カテゴリーが空では出品できないこと"  do
-      item = build(:item, :with_image, category_id:"")
-      item.valid?
-      expect(item.errors[:category_id]).to include("を入力してください")
-    end
-    
     it  "カテゴリーが１(---)では出品できないこと"  do
       item = build(:item, :with_image, category_id:"1")
       item.valid?
