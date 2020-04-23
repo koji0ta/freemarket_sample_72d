@@ -22,8 +22,7 @@
               = f.fields_for :images do |image|
                 .js-file_group{data:{ index: image.index }}
                   = image.file_field :src, class: 'js-file'
-                  %br/
-                  %span.js-remove 削除
+                  .js-remove 削除
                 - if @item.persisted?
                   = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
               - if @item.persisted?
@@ -43,7 +42,7 @@
             = f.label "商品の説明", class: "field-label"
             %span.form-require 必須
             %br/
-            = f.text_area :description, class:"item-text-field", placeholder: "商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
+            = f.text_area :description, class:"item-text-field__edit", placeholder: "商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
             %br/
             %p.style-counter
               %span 0
@@ -53,12 +52,12 @@
         .item-edit-form__form-box
           .item-edit-form__form-box__title
             商品の詳細
-            %span.require 必須
+            %span.form-require 必須
           .item-edit-form__form-box__wrapper
             .item-edit-form__form-box__categories
               .item-edit-form__form-box__categories__default
                 = f.label 'カテゴリー', class: 'parent-category-label'
-                %span.require 必須
+                %span.form-require 必須
                 = f.collection_select :category_id, @category_parent_array, :id, :name, {selected: @item.category.parent.parent.id},{class: "item-select-field", id: "edit_parent_category"}
               .item-edit-form__form-box__categories__added#children-edit-box
                 = f.collection_select :category_id, @category_children_array, :id, :name, {selected: @item.category.parent.id},{class: "item-select-field", id: "edit_child_category"}
@@ -67,11 +66,11 @@
 
             .item-edit-form__form-box__condition
               = f.label '状態', class: 'condition-label'
-              %span.require 必須
+              %span.form-require 必須
               = f.collection_select :status, Status.all, :id, :name, {include_blank: false}, {class:"item-select-field"}
             .item-edit-form__form-box__size
               = f.label 'サイズ', class: 'size-label'
-              %span.require 必須
+              %span.form-require 必須
               = f.collection_select :size, Size.all, :id, :name, {include_blank: false}, {class:"item-select-field"}
 
         .item-edit-form__form-box
@@ -82,6 +81,7 @@
             = f.collection_select :cost, Cost.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
             %li.send-menu 発送元の地域
             = @place.prefecture
+            %span からの発送
             %li.send-menu 発送までの日数
             = f.collection_select :days, Days.all, :id, :name, {include_blank: false}, {class: "item-select-field"}
 

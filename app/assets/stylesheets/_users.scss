@@ -5,34 +5,23 @@
 }
 
 .container {
-  padding: 40px 70px 40px;
-  height: 1000px;
   width: 100%;
 
   .contents-box {
-    width: 700px;
+    width: 50%;
+    margin: 40px 80px 80px 0;
     float: right;
     box-sizing: inherit;
-    padding-bottom: 40px;
 
     &__user-box {
-      height: 200px;
-      position: relative;
 
       &__profile-box {
         width: 100%;
-        position: absolute;
-        top: 30%;
         text-align: center;
+        margin: 40px 0;
 
         .user-name {
           font-size: 14px;
-          margin: 8px 0 0;
-        }
-
-        .icon {
-          height: 60px;
-          width: 60px;
         }
       }
     }

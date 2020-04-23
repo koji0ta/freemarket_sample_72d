@@ -86,17 +86,29 @@
 .btn-delete {
   width: 330px;
   height: 60px;
-  background-color: red;
+  margin-bottom: 30px;
+  background-color: #ea352d;
   cursor: pointer;
   color: white;
   display: block;
-  margin: 0 auto 3em auto;
+}
+
+.back-btn {
+  text-decoration: none;
+  width: 330px;
+  height: 60px;
+  background-color: #3CCACE;
+  cursor: pointer;
+  color: white;
+  display: block;
+  text-align: center;
+  line-height: 60px;
 }
 
 .form-require {
   display: inline-block;
   padding: 2px;
-  background-color: red;
+  background-color: #ea352d;
   color: white;
   margin-left: 10px;
   border-radius: 5px;
