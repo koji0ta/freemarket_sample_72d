@@ -19,13 +19,13 @@
               = f.fields_for :images do |image|
                 .js-file_group{data:{ index: image.index }}
                   = image.file_field :src, class: 'js-file'
-                  %span.js-remove 削除
+                  .js-remove 削除
                 - if  @item.persisted?
                   =image.check_box :_destroy, data:{index: "image.index"},class: "hidden-destroy"
               - if  @item.persisted?
                 .js-file_group{data:{ index: @images.count }}
                   = file_field_tag :src,name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
-                  %span.js-remove 削除
+                  .js-remove 削除
       .item-new-box
         .item-new-box__name
           = f.label "商品名", class: "items-text"
@@ -36,7 +36,7 @@
           = f.label  "商品の説明", class: "items-text"
           %span.require 必須
           %br/
-          = f.text_area :description, class: "item-text-field", placeholder: "商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
+          = f.text_area :description, class: "item-text-field__new", placeholder: "商品の説明（必須)\n(色、素材、重さ、定価、注意点など）\n\n例）2020年の最新モデル、定価1万８千円、フワフワのモコモコです。"
           %br/
           %p.style-counter
             %span 0

@@ -47,17 +47,7 @@
       font-size: 16px;
     }
   }
-  h1{
-    width: 40px;
-    background: #ea352d;
-    color: #fff;
-    margin: 0 0 0 8px;
-    padding: 2px 4px;
-    font-size: 12px;
-    vertical-align: top;
-    border-radius: 5px;
-    display: inline-grid;
-  }
+  
   .right{
     height: 48px;
     width: 100px;
@@ -75,6 +65,7 @@
     margin: 50px 0px 0px 0px;
     background: red;
     color: #fff;
+    font-weight: bold;
     cursor: pointer;
   }
 }
