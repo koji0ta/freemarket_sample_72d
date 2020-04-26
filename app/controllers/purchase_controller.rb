@@ -30,7 +30,6 @@ class PurchaseController < ApplicationController
   end
 
   def done
-
   end
   
   private
