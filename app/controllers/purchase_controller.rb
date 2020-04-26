@@ -1,7 +1,6 @@
 class PurchaseController < ApplicationController
-
+  before_action :authenticate_user!
   require 'payjp'
-
   before_action :set_card, except: :done
   before_action :set_item, except: :done
 
@@ -22,12 +21,12 @@ class PurchaseController < ApplicationController
   def pay
     Payjp.api_key = Rails.application.credentials[:PAYJP][:PRIVATE_KEY]
     Payjp::Charge.create(
-    amount: @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）
-    customer: @card.customer_id, #顧客ID
-    currency: 'jpy', #日本円
-  )
-  @item.update(whether_sale: 0)
-  redirect_to action: 'done' #完了画面に移動
+      amount: @item.price, #支払金額を入力（itemテーブル等に紐づけても良い）
+      customer: @card.customer_id, #顧客ID
+      currency: 'jpy', #日本円
+    )
+    @item.update(whether_sale: 0)
+    redirect_to action: 'done' #完了画面に移動
   end
 
   def done

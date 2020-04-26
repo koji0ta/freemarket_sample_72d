@@ -3,8 +3,10 @@
 .item-box
   .item-box__name
     = @item.name
+
   .item-box__wording
     = "#{@item.name}は#{@user.nickname}さんから出品されました。#{@first_category.name}の商品で、#{@days.name}されます。"
+
   .item-box__main-content
     .item-box__main-content__left-photo
       %ul.slider
@@ -41,18 +43,17 @@
       (税込み)
     .item-box__price-box__item-shipping
       = @cost.name
+
   - if user_signed_in? && current_user.id == @item.user_id
+    .item-box__btn-box
+      = link_to "商品情報を編集する", edit_item_path, method: :get, class: "btn"
+      = link_to '出品をやめる', item_path, method: :delete, class: "btn"
   - else
-    .item-box__item-buybtn
-      = link_to '購入画面に進む', purchase_index_path(item_id: @item.id), class: :buybtn
+    .item-box__btn-box
+      = link_to '購入画面に進む', purchase_index_path(item_id: @item.id), class: "btn"
     .item-box__details
       %p
         = @item.description
-
-- if user_signed_in? && current_user.id == @item.user_id
-  .item-box__wrapper
-    = link_to "商品情報を編集する", edit_item_path, method: :get, class: "item-edit__btn"
-    = link_to '出品をやめる', item_path, method: :delete, class: "item-delete__btn"
 
 = render partial: "top-appbanner"
 = render partial: "top-footer"
