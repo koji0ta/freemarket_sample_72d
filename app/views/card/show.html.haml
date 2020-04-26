@@ -1,6 +1,6 @@
 = render partial: "devise/header_view"
-.cards
-  = render partial: "users/side-box"
+
+.cards.clearfix
   .card-show
     %h2.card-show__top
       登録クレジットカード情報
@@ -18,8 +18,10 @@
             = exp_month + " / " + exp_year
 
         .card-show__container__margin__deleat
-          = form_tag(delete_card_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+          = form_tag(delete_card_index_path, method: :post, id: 'charge-form', name: "inputForm") do
             %input{ type: "hidden", name: "card_id", value: "" }
-            %button{ class: :deleat }削除する
+            %button{ class: "delete" }削除する
+
+  = render partial: "users/side-box"
 
 = render partial: "devise/footer_view"
