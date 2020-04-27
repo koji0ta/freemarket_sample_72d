@@ -2,6 +2,7 @@
   height: auto;
   margin: 0 auto;
   width: 700px;
+
   &__header {
     height: 100px;
     text-align: center;
@@ -10,11 +11,14 @@
     font-weight: bolder;
     border-bottom: 1px solid gray;
   }
+
   &__contents {
     padding: 40px;
+
     &__wrapper {
       margin: 0 auto;
       width: 350px;
+
       &__btn {
         width: 330px;
         height: 60px;
@@ -23,44 +27,53 @@
         color: white;
         display: block;
       }
+
       .actions {
         margin-top: 3em;
         text-align: center;
       }
+
       &__box {
         margin-bottom: 30px;
+
         &__form {
           margin-top: 10px;
           height: 40px;
           width: 330px;
         }
       }
+
       &__name-box {
         margin-bottom: 30px;
+
         &__last {
           margin-top: 10px;
           height: 40px;
           width: 150px;
         }
+
         &__first {
           margin-top: 10px;
           height: 40px;
           width: 150px;
         }
       }
+
       &__birth {
         margin-bottom: 30px;
+
         #user_birth_1i {
           margin-top: 20px;
           margin-right: 10px;
-          
           height: 40px;
         }
+
         #user_birth_2i {
           margin-right: 10px;
           margin-left: 10px;
           height: 40px;
         }
+        
         #user_birth_3i {
           height: 40px;
           margin-left: 10px;
