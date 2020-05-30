@@ -1,11 +1,17 @@
-.cards{
+.clearfix::after {
+  content: “”;
+  display: block;
+  clear: both;
+}
+
+.cards {
   width: 100%;
 
-  .card-show{
-    width: 50%;
+  .card-show {
+    width: 60%;  // サイドバーを40%にしたため
     float: right;
     display: table;
-    margin: 40px 80px 40px 40px;
+    padding: 40px;
 
     &__top {
       font-size: 24px;
@@ -22,39 +28,41 @@
       &__margin {
         margin: 0 auto;
         width: 75%;
-        ul{
+
+        ul {
           display: flex;
         }
   
-          li{
-            width: 39%;
-            text-align: left;
-            font-weight: 400;
-            background: #fafafa;
-            list-style: none;
-            padding: 8px;
-            border: 1px solid #f5f5f5;
-          }
-  
-          h4{
-            width: 61%;
-            background: #fff;
-            list-style: none;
-            display: flex;
-            padding: 8px;
-            border: 1px solid #f5f5f5;
+        li {
+          width: 39%;
+          text-align: left;
+          font-weight: 400;
+          background: #fafafa;
+          list-style: none;
+          padding: 8px;
+          border: 1px solid #f5f5f5;
+        }
+
+        h4{
+          width: 61%;
+          background: #fff;
+          list-style: none;
+          display: flex;
+          padding: 8px;
+          border: 1px solid #f5f5f5;
         }
       }
     }
   }
-  .deleat{
-    height: 60px;
+
+  .delete {
+    line-height: 60px;
     width: 100%;
-    padding: 15px;
     font-size: 20px;
     margin: 50px 0px 0px 0px;
     background: red;
     color: #fff;
+    font-weight: bold;
     cursor: pointer;
   }
 }
